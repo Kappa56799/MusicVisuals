@@ -4,6 +4,11 @@ Name: Kacper Palka
 
 Student Number: C22376553
 
+
+Name: Miron Nekrasovs
+
+Student Number: C22486382
+
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
 - Create a new package named your student number and put all your code in this package.
