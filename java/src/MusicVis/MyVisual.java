@@ -4,7 +4,7 @@ import ie.tudublin.*;
 
 public class MyVisual extends Visual {
     //Tree tree;
-    test Test;
+    cube cube;
     Raindrops raindrops;
     Platforms platforms;
 
@@ -28,7 +28,7 @@ public class MyVisual extends Visual {
         //startListening();
 
         //tree = new Tree(this);
-        Test = new test(this);
+        cube = new cube(this);
         raindrops = new Raindrops(this);
         platforms = new Platforms(this);
     }
@@ -42,7 +42,7 @@ public class MyVisual extends Visual {
 
     public void draw() {
         raindrops.render();
-        Test.render();
+        cube.render();
         platforms.render();
             
     }
