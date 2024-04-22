@@ -22,5 +22,5 @@
 hs_err_pid*
 
 # files that weren't needed
-./java/useless/
-./java/src/MusicVis/deletelater/
+java/useless/
+java/src/MusicVis/deletelater/
