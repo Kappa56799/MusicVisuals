@@ -7,6 +7,9 @@ public class MyVisual extends Visual {
     cube cube;
     Raindrops raindrops;
     Platforms platforms;
+    wave wave;
+    Tree tree;
+
 
     public void settings() {
         //size(1024, 500);
@@ -15,7 +18,7 @@ public class MyVisual extends Visual {
         fullScreen();
 
         // Use this to make fullscreen and use P3D for 3D graphics
-        // fullScreen(P3D, SPAN);
+        //fullScreen(P3D, SPAN);
     }
 
     public void setup() {
@@ -23,7 +26,7 @@ public class MyVisual extends Visual {
 
         // Call loadAudio to load an audio file to process
         loadAudio("music/Snake_Eyes_Faint.mp3");
-
+        colorMode(HSB, 360, 100, 100);
         //Call this instead to read audio from the microphone
         //startListening();
 
@@ -31,6 +34,9 @@ public class MyVisual extends Visual {
         cube = new cube(this);
         raindrops = new Raindrops(this);
         platforms = new Platforms(this);
+        wave = new wave(this);
+        tree = new Tree(this);
+
     }
 
     public void keyPressed() {
@@ -41,9 +47,22 @@ public class MyVisual extends Visual {
     }
 
     public void draw() {
-        raindrops.render();
+        background(0);
+
+        if (key == '2') {
+            tree.render();
+            
+        }
+
+        if (key == '1') {
+            raindrops.render();
+        }
+
+
+        wave.render();
         cube.render();
         platforms.render();
+
             
     }
 }

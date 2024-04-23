@@ -7,20 +7,20 @@ public class Platforms {
 
     public Platforms(MyVisual mv) {
         this.mv = mv;
-        platformHeight = mv.height / 2; // Set platform height to the middle of the screen
+        platformHeight = mv.height / 2 + 280; // Set platform height to the middle of the screen
     }
 
     public void render() {
         mv.stroke(255); // Set stroke color to white
         
         // Draw platforms
-        drawPlatform(0, platformHeight, mv.width / 3, 20); // First platform
-        drawPlatform(mv.width / 3 * 2, platformHeight, mv.width / 3, 20); // Second platform
+        drawPlatform(0, platformHeight, mv.width * 2, 20); // First platform
     }
 
     void drawPlatform(float x, float y, float width, float height) {
         mv.fill(100); // Set platform color to gray
         mv.rectMode(mv.CENTER); // Set rectangle mode to center
+        mv.stroke(0, 0, 100);
         mv.rect(x, y, width, height); // Draw platform
     }
 }

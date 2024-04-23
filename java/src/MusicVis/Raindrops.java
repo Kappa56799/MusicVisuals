@@ -58,7 +58,7 @@ public class Raindrops {
         }
 
         void display() {
-            mv.stroke(255, 255, 255); // Set random raindrop color
+            mv.stroke(0, 0, 100); // Set random raindrop color
             mv.line(x, y, x, y + length); // Draw raindrop
         }
 
