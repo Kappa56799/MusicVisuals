@@ -16,7 +16,7 @@ public class MyVisual extends Visual {
         //size(1024, 500);
 
         // Use this to make fullscreen
-        // fullScreen();
+        //fullScreen();
 
         // Use this to make fullscreen and use P3D for 3D graphics
         fullScreen(P3D, SPAN);
@@ -31,6 +31,8 @@ public class MyVisual extends Visual {
         //Call this instead to read audio from the microphone
         //startListening();
 
+        getAudioPlayer().cue(0);
+        getAudioPlayer().play();
         //tree = new Tree(this);
         cube = new cube(this);
         raindrops = new Raindrops(this);
@@ -41,12 +43,6 @@ public class MyVisual extends Visual {
 
     }
 
-    public void keyPressed() {
-        if (key == ' ') {
-            getAudioPlayer().cue(0);
-            getAudioPlayer().play();
-        }
-    }
 
     public void draw() {
         background(0);
