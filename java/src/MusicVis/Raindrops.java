@@ -1,11 +1,10 @@
 package MusicVis;
-import processing.core.*;
 import java.util.ArrayList;
 
 public class Raindrops {
     MyVisual mv;
     ArrayList<Raindrop> raindrops;
-    float angle = mv.radians(20); // Angle in radians
+    float angle = 0.349066f; // Angle in radians (20 degrees)
 
     public Raindrops(MyVisual mv) {
         this.mv = mv;
@@ -13,12 +12,15 @@ public class Raindrops {
     }
 
     public void render() {
+        mv.pushMatrix(); // Save the current transformation matrix
         mv.background(0); // Clear the background
         // Draw raindrops
         drawRaindrops();
+        mv.popMatrix(); // Restore the transformation matrix
     }
 
     void drawRaindrops() {
+        
         for (int i = 0; i < 8; i++) { // Adjust the number of raindrops as needed
             float rx = mv.random(-500, mv.width + 100); // Random x position (extended beyond the screen)
             float ry = mv.random(-500, -20); // Random y position above the screen
@@ -37,6 +39,7 @@ public class Raindrops {
                 raindrops.remove(i); // Remove raindrop if off the screen
             }
         }
+        
     }
 
     // Inner class for raindrop

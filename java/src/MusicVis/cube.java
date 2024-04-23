@@ -10,6 +10,7 @@ public class cube {
     }
 
     public void render() {
+        mv.hint(mv.DISABLE_DEPTH_TEST);
         mv.fill(50); // Red color
         mv.stroke(0, 0, 100);
         mv.rectMode(mv.CENTER); // Set rectangle mode to center
@@ -18,5 +19,6 @@ public class cube {
         // Draw a face on one side of the cube
         mv.fill(0, 0, 100); // Green color for the face
         mv.circle(x , y, (float) 20); // Draw a rectangle to represent the face
+        mv.hint(mv.ENABLE_DEPTH_TEST);
     }
 }
