@@ -60,7 +60,7 @@ public class MyVisual extends Visual {
             raindrops.render();
         }
 
-        if (key == '3'){
+        if (key == '4'){
             
         }
 
