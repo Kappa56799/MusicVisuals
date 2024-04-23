@@ -10,6 +10,7 @@ public class MyVisual extends Visual {
     wave wave;
     Tree tree;
     grids grids;
+    matrix matrix;
 
 
     public void settings() {
@@ -38,6 +39,7 @@ public class MyVisual extends Visual {
         wave = new wave(this);
         tree = new Tree(this);
         grids = new grids(this);
+        matrix = new matrix();
 
     }
 
@@ -61,7 +63,7 @@ public class MyVisual extends Visual {
         }
 
         if (key == '4'){
-            
+            matrix.render();
         }
 
 
@@ -71,6 +73,7 @@ public class MyVisual extends Visual {
         wave.render();
         cube.render();
         platforms.render();
+        matrix.render();
 
 
             

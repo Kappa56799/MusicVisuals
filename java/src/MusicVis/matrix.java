@@ -15,12 +15,8 @@ public class matrix extends PApplet {
         PApplet.main("Matrix");
     }
 
+
     public void render() {
-        mv.background(0, 60, 0);
-    }
-
-
-    public void setup() {
         theFont = createFont("Arial Unicode MS", 20);
         textFont(theFont);
 
@@ -29,6 +25,8 @@ public class matrix extends PApplet {
         for (int x = 10; x < width; x += 20) {
             streams.add(new Stream(x));
         }
+
+        draw();
     }
 
     public void draw() {
