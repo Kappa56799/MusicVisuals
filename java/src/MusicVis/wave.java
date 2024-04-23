@@ -13,6 +13,7 @@ public class wave {
 
     }
     public void render() {
+        mv.hint(mv.DISABLE_DEPTH_TEST);
         // Check if 2 seconds have elapsed since the last color change
         if (mv.millis() - lastColorChangeTime >= interval) {
             // Change color
@@ -47,6 +48,7 @@ public class wave {
         mv.vertex(mv.width, mv.height);
         mv.vertex(0, mv.height);
         mv.endShape(mv.CLOSE);
+        mv.hint(mv.ENABLE_DEPTH_TEST);
     }
     
 }

@@ -53,13 +53,14 @@ public class MyVisual extends Visual {
     public void draw() {
         background(0);
 
-        if (key == '2') {
-            tree.render();
-            
-        }
 
         if (key == '1') {
             raindrops.render();
+        }
+
+        if (key == '2') {
+            tree.render();
+            
         }
 
         if (key == '3') {
@@ -75,6 +76,9 @@ public class MyVisual extends Visual {
             randomline.render();
         }
         
+        else if (key == ' ') {
+          cube.update();
+        }
         wave.render();
         cube.render();
         platforms.render();
