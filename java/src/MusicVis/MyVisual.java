@@ -70,6 +70,9 @@ public class MyVisual extends Visual {
             matrix.render();
         }
         
+        else if (key == ' ') {
+          cube.update();
+        }
         wave.render();
         cube.render();
         platforms.render();
