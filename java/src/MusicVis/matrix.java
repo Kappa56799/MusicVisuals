@@ -9,10 +9,16 @@ public class matrix extends PApplet {
 
     PFont theFont;
     ArrayList<Stream> streams;
+    MyVisual mv;
 
     public static void main(String[] args) {
-        PApplet.main("Main2");
+        PApplet.main("Matrix");
     }
+
+    public void render() {
+        mv.background(0, 60, 0);
+    }
+
 
     public void setup() {
         theFont = createFont("Arial Unicode MS", 20);
@@ -72,10 +78,10 @@ public class matrix extends PApplet {
         Stream(int tempX) {
             this.tempX = tempX;
             chars = new ArrayList<>();
-            numChar = (int) Math.round(random(10, 20));
+            numChar = height / 20; // Adjusted to fill the height of the screen
             speed = (int) Math.round(random(10, 60));
 
-            for (int y = 0; y < numChar * 20; y += 20) {
+            for (int y = 0; y < height; y += 20) { // Adjusted to fill the height of the screen
                 chars.add(new Char(tempX, y));
             }
         }
