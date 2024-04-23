@@ -41,7 +41,7 @@ public class MyVisual extends Visual {
         wave = new wave(this);
         tree = new Tree(this);
         grids = new grids(this);
-        matrix = new matrix();
+        matrix = new matrix(this);
 
     }
 
@@ -70,7 +70,6 @@ public class MyVisual extends Visual {
         wave.render();
         cube.render();
         platforms.render();
-        matrix.render();
 
 
             
