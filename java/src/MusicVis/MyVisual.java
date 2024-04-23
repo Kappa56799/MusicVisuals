@@ -9,6 +9,7 @@ public class MyVisual extends Visual {
     Platforms platforms;
     wave wave;
     Tree tree;
+    grids grids;
 
 
     public void settings() {
@@ -36,6 +37,7 @@ public class MyVisual extends Visual {
         platforms = new Platforms(this);
         wave = new wave(this);
         tree = new Tree(this);
+        grids = new grids(this);
 
     }
 
@@ -63,9 +65,13 @@ public class MyVisual extends Visual {
         }
 
 
+        if (key == '3') {
+            grids.render();
+        }
         wave.render();
         cube.render();
         platforms.render();
+
 
             
     }
