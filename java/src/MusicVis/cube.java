@@ -18,6 +18,7 @@ public class cube {
         mv.hint(mv.DISABLE_DEPTH_TEST);
         mv.fill(50); // Gray color for the cube
         mv.stroke(0, 0, 100);
+        mv.strokeWeight(2);
         mv.rectMode(mv.CENTER); // Set rectangle mode to center
         mv.rect(x, y, 50, 50); // Draw square at current position
 

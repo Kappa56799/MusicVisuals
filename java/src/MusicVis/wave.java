@@ -14,6 +14,7 @@ public class wave {
     }
     public void render() {
         mv.hint(mv.DISABLE_DEPTH_TEST);
+        mv.strokeWeight(1);
         // Check if 2 seconds have elapsed since the last color change
         if (mv.millis() - lastColorChangeTime >= interval) {
             // Change color
