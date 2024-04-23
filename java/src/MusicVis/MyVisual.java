@@ -11,6 +11,7 @@ public class MyVisual extends Visual {
     Tree tree;
     grids grids;
     matrix matrix;
+    rotatingcube rotatingcube;
 
 
     public void settings() {
@@ -42,6 +43,7 @@ public class MyVisual extends Visual {
         tree = new Tree(this);
         grids = new grids(this);
         matrix = new matrix(this);
+        rotatingcube = new rotatingcube(this);
 
     }
 
@@ -60,6 +62,7 @@ public class MyVisual extends Visual {
 
         if (key == '3') {
             grids.render();
+            rotatingcube.render();
         }
 
         if (key == '4') {
