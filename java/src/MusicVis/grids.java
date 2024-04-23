@@ -2,12 +2,13 @@ package MusicVis;
 
 public class grids {
     int lastColorChange = 0;
-    int colorChangeInterval = 500;
-    int currentColor;
+    int colorChangeInterval = 2000;
+    int currentColor, nextColor;
     MyVisual mv;
     public grids(MyVisual mv) {
         this.mv = mv;
     }
+
 
     void render() {
         mv.pushStyle();
@@ -16,9 +17,12 @@ public class grids {
         defineLights();
         
         if (mv.millis() - lastColorChange > colorChangeInterval) {
-            currentColor = mv.color(mv.random(255), mv.random(255), mv.random(255));
+            currentColor = nextColor;
+            nextColor = mv.color(mv.random(70,500), mv.random(70,500), mv.random(70,500));
             lastColorChange = mv.millis();
         }
+
+        float amt = (float)(mv.millis() - lastColorChange) / colorChangeInterval;
 
         for (int x = 0; x <= mv.width; x += 60) {
             for (int y = 0; y <= mv.height; y += 60) {
@@ -27,15 +31,17 @@ public class grids {
                 mv.rotateY(mv.map(mv.mouseX, 0, mv.width, 0, mv.PI));
                 mv.rotateX(mv.map(mv.mouseY, 0, mv.height, 0, mv.PI));
                 mv.box(90);
-                mv.fill(currentColor);
+                mv.stroke(0);
+                mv.fill(mv.lerpColor(currentColor, nextColor, amt));
                 mv.popMatrix();
             }
         }
         mv.hint(mv.ENABLE_DEPTH_TEST);
         mv.popStyle();
     }
+
     
-        void defineLights() {
+    void defineLights() {
         mv.ambientLight(0, 0, 100);
         // Orange point light on the right
         mv.pointLight(150, 100, 0,   // Color
