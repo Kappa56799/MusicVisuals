@@ -11,6 +11,7 @@ public class MyVisual extends Visual {
     Tree tree;
     grids grids;
     matrix matrix;
+    rainbow rainbow;
 
 
     public void settings() {
@@ -42,6 +43,7 @@ public class MyVisual extends Visual {
         tree = new Tree(this);
         grids = new grids(this);
         matrix = new matrix(this);
+        rainbow = new rainbow(this);
 
     }
 
@@ -65,6 +67,10 @@ public class MyVisual extends Visual {
 
         if (key == '4') {
             matrix.render();
+        }
+
+        if (key == '5') {
+            rainbow.render();
         }
         
         wave.render();
