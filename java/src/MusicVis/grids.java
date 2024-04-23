@@ -7,9 +7,10 @@ public class grids {
     }
 
     void render() {
+        mv.pushStyle();
+        mv.hint(mv.DISABLE_DEPTH_TEST);
+
         defineLights();
-        mv.background(0);
-        
         for (int x = 0; x <= mv.width; x += 60) {
             for (int y = 0; y <= mv.height; y += 60) {
                 mv.pushMatrix();
@@ -20,9 +21,12 @@ public class grids {
                 mv.popMatrix();
             }
         }
+        mv.hint(mv.ENABLE_DEPTH_TEST);
+        mv.popStyle();
     }
     
         void defineLights() {
+        mv.ambientLight(0, 0, 100);
         // Orange point light on the right
         mv.pointLight(150, 100, 0,   // Color
                    200, -150, 0); // Position
