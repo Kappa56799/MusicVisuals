@@ -1,6 +1,9 @@
 package MusicVis;
 
 public class grids {
+    int lastColorChange = 0;
+    int colorChangeInterval = 500;
+    int currentColor;
     MyVisual mv;
     public grids(MyVisual mv) {
         this.mv = mv;
@@ -11,6 +14,12 @@ public class grids {
         mv.hint(mv.DISABLE_DEPTH_TEST);
 
         defineLights();
+        
+        if (mv.millis() - lastColorChange > colorChangeInterval) {
+            currentColor = mv.color(mv.random(255), mv.random(255), mv.random(255));
+            lastColorChange = mv.millis();
+        }
+
         for (int x = 0; x <= mv.width; x += 60) {
             for (int y = 0; y <= mv.height; y += 60) {
                 mv.pushMatrix();
@@ -18,6 +27,7 @@ public class grids {
                 mv.rotateY(mv.map(mv.mouseX, 0, mv.width, 0, mv.PI));
                 mv.rotateX(mv.map(mv.mouseY, 0, mv.height, 0, mv.PI));
                 mv.box(90);
+                mv.fill(currentColor);
                 mv.popMatrix();
             }
         }
