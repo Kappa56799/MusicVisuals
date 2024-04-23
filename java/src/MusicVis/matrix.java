@@ -14,10 +14,6 @@ public class matrix extends PApplet {
         PApplet.main("Main2");
     }
 
-    public void settings() {
-        size(1920, 1080);
-    }
-
     public void setup() {
         theFont = createFont("Arial Unicode MS", 20);
         textFont(theFont);
