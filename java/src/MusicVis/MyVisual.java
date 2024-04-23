@@ -50,40 +50,72 @@ public class MyVisual extends Visual {
     }
 
 
-    public void draw() {
-        background(0);
 
 
-        if (key == '1') {
-            raindrops.render();
-        }
+int current = 0;
+boolean spacePressed = false;
+int jumpDuration = 60; // Adjust this value to change the duration of the jump
+int jumpTimer = 0;
 
-        if (key == '2') {
-            tree.render();
-            
-        }
-
-        if (key == '3') {
-            grids.render();
-            rotatingcube.render();
-        }
-
-        if (key == '4') {
-            matrix.render();
-        }
-
-        if (key == '7') {
-            randomline.render();
-        }
-        
-        else if (key == ' ') {
-          cube.update();
-        }
-        wave.render();
-        cube.render();
-        platforms.render();
-
-
-            
+public void keyPressed() {
+    if (key == '1') {
+        raindrops.render();
+        current = 1;
+    } else if (key == '2') {
+        tree.render();
+        current = 2;
+    } else if (key == '3') {
+        grids.render();
+        rotatingcube.render();
+        current = 3;
+    } else if (key == '4') {
+        matrix.render();
+        current = 4;
+    } else if (key == '7') {
+        randomline.render();
+        current = 7;
+    } else if (key == ' ') {
+        spacePressed = true;
+        cube.update();
     }
+}
+
+public void keyReleased() {
+    if (key == ' ') {
+        spacePressed = false;
+        jumpTimer = jumpDuration; // Set the jump timer to the duration
+    }
+}
+
+public void draw() {
+    background(0);
+    if (spacePressed) {
+        cube.update();
+    } else if (jumpTimer > 0) {
+        cube.update(); // Update cube position even if space bar isn't pressed
+        jumpTimer--; // Decrease the jump timer
+    }
+    
+    if (current == 1) {
+        raindrops.render();
+    } else if (current == 2) {
+        tree.render();
+    } else if (current == 3) {
+        grids.render();
+        rotatingcube.render();
+    } else if (current == 4) {
+        matrix.render();
+    } else if (current == 7) {
+        randomline.render();
+    }
+    
+    // Render common elements
+    wave.render();
+    cube.render();
+    platforms.render();
+}
+
+
+
+
 }
