@@ -25,12 +25,12 @@ public class Tree {
 
         // Adjust i based on whether it's increasing or decreasing
         if (increasing) {
-            i += 10;
+            i += 30;
             if (i >= mv.width) {
                 increasing = false;
             }
         } else {
-            i -= 10;
+            i -= 30;
             if (i <= 0) {
                 increasing = true;
             }
