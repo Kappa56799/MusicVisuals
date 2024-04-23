@@ -33,10 +33,9 @@ public class randomline {
         ay[num-1] = mv.constrain(ay[num-1], 0, mv.height);
         
         // Draw the line
+        mv.strokeWeight(5);
+        mv.stroke(mv.random(70, 500), 100, 100);
         for(int i=1; i<num; i++) {    
-            float val = (float)((i)/num * 204.0 + 51);
-            mv.strokeWeight(5);
-            mv.stroke(mv.random(70, 500), 100, 100);
             mv.line(ax[i-1], ay[i-1], ax[i], ay[i]);
         }
     }
