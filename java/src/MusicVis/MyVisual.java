@@ -12,6 +12,7 @@ public class MyVisual extends Visual {
     grids grids;
     matrix matrix;
     rotatingcube rotatingcube;
+    randomline randomline;
 
 
     public void settings() {
@@ -44,6 +45,7 @@ public class MyVisual extends Visual {
         grids = new grids(this);
         matrix = new matrix(this);
         rotatingcube = new rotatingcube(this);
+        randomline = new randomline(this);
 
     }
 
@@ -67,6 +69,10 @@ public class MyVisual extends Visual {
 
         if (key == '4') {
             matrix.render();
+        }
+
+        if (key == '7') {
+            randomline.render();
         }
         
         wave.render();
