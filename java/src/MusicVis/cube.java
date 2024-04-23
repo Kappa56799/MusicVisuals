@@ -14,19 +14,36 @@ public class cube {
         y = mv.height / 2 + 244;
     }
 
+
     public void render() {
         mv.hint(mv.DISABLE_DEPTH_TEST);
+        mv.pushMatrix(); // Save the current transformation matrix
+
+        // Translate to the position of the cube
+        mv.translate(x, y);
+
+        // Rotate the cube if it's jumping
+        if (isJumping) {
+            // Calculate rotation angle based on velocity
+            float rotationAngle = mv.map(velocity, jumpStrength, 0, 0, mv.HALF_PI);
+            mv.rotate(rotationAngle);
+        }
+
+        // Draw the cube
         mv.fill(50); // Gray color for the cube
         mv.stroke(0, 0, 100);
         mv.strokeWeight(2);
         mv.rectMode(mv.CENTER); // Set rectangle mode to center
-        mv.rect(x, y, 50, 50); // Draw square at current position
+        mv.rect(0, 0, 50, 50); // Draw square at current position
 
         // Draw a face on one side of the cube
         mv.fill(0, 0, 100); // Green color for the face
-        mv.circle(x , y, (float) 20); // Draw a rectangle to represent the face
+        mv.circle(0, 0, 20); // Draw a rectangle to represent the face
+
+        mv.popMatrix(); // Restore the previous transformation matrix
         mv.hint(mv.ENABLE_DEPTH_TEST);
     }
+
 
     public void jump() {
         if (!isJumping) { // Check if the cube is not already jumping
