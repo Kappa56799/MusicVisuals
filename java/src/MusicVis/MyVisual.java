@@ -55,6 +55,8 @@ public class MyVisual extends Visual {
         movingobject = new movingobject(this);
         bigwave = new bigwave(this);
         snowflake = new Snowflake(this);
+        birds = new birds(this);
+        balls = new balls(this);
 
     }
 
