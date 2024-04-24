@@ -55,9 +55,9 @@ class Boid {
         float angle = mv.random(mv.TWO_PI);
         velocity = new PVector(mv.cos(angle), mv.sin(angle));
         position = new PVector(x, y);
-        r = (float)8.0;
+        r = 8.0f;
         maxspeed = 8;
-        maxforce = (float)0.03;
+        maxforce = 0.03f;
     }
 
     

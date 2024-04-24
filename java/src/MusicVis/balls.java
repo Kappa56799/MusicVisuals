@@ -3,9 +3,9 @@ package MusicVis;
 public class balls {
     MyVisual mv;
     int numBalls = 20;
-    float spring = (float)0.05;
-    float gravity = (float)0.03;
-    float friction = (float)-0.9;
+    float spring = 0.05f;
+    float gravity = 0.03f;
+    float friction = -0.9f;
     Ball[] balls = new Ball[numBalls];
 
     public balls(MyVisual mv) {
