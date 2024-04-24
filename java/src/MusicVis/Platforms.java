@@ -66,7 +66,6 @@ class Platform {
 
     public void display() {
         mv.fill(100); // Set platform color to gray
-        mv.rectMode(mv.CENTER); // Set rectangle mode to center
         mv.stroke(0, 0, 100);
         mv.triangle(x - width / 2, y + 10, x, y + 60, x + width / 2, y + 10); // Draw platform
         mv.rect(x, y, width, 20); // Draw platform

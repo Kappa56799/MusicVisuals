@@ -7,7 +7,7 @@ import processing.core.PVector; // Import PVector class
 public class birds {
     MyVisual mv;
     Flock flock;
-    int maxBoids = 500; // Maximum number of boids
+    int maxBoids = 200; // Maximum number of boids
 
     public birds(MyVisual mv) {
         this.mv = mv;
