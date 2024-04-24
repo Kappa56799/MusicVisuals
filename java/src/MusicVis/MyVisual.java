@@ -16,6 +16,7 @@ public class MyVisual extends Visual {
     rainbow rainbow;
     movingobject movingobject;
     bigwave bigwave;
+    Snowflake snowflake;
 
     public void settings() {
         // size(1024, 500);
@@ -51,6 +52,7 @@ public class MyVisual extends Visual {
         rainbow = new rainbow(this);
         movingobject = new movingobject(this);
         bigwave = new bigwave(this);
+        snowflake = new Snowflake(this);
 
     }
 
@@ -61,6 +63,7 @@ public class MyVisual extends Visual {
 
     public void keyPressed() {
         if (key == '1') {
+            snowflake.render(); 
             movingobject.render();
             raindrops.render();
             current = 1;
@@ -72,7 +75,7 @@ public class MyVisual extends Visual {
             rotatingcube.render();
             current = 3;
         } else if (key == '4') {
-            matrix.render();
+            snowflake.render();
             current = 4;
         }  else if (key == '5') {
             rainbow.render();
@@ -104,6 +107,7 @@ public class MyVisual extends Visual {
         }
 
         if (current == 1) {
+            snowflake.render(); 
             movingobject.render();
             raindrops.render();
         } else if (current == 2) {
@@ -112,7 +116,6 @@ public class MyVisual extends Visual {
             grids.render();
             rotatingcube.render();
         } else if (current == 4) {
-            matrix.render(); 
         } else if (current == 5) {
             rainbow.render();
         } else if (current == 7) {
@@ -121,6 +124,7 @@ public class MyVisual extends Visual {
         }
 
         // Render common elements
+        
         wave.render();
         square.render();
         platforms.render();
