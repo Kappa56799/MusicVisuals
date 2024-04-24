@@ -1,6 +1,6 @@
 package MusicVis;
 
-public class cube {
+public class square {
     MyVisual mv;
     float x, y = 0;
     float velocity = 0; // Initial velocity
@@ -8,7 +8,7 @@ public class cube {
     boolean isJumping = false; // Flag to track whether the cube is currently jumping
     float jumpStrength = -15; // Strength of the jump
 
-    public cube(MyVisual mv) {
+    public square(MyVisual mv) {
         this.mv = mv;
         x = mv.width / 2 - 300;
         y = mv.height / 2 + 244;
