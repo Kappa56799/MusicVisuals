@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public class Platforms {
     MyVisual mv;
     ArrayList<Platform> platforms;
-    float gapWidth = 200; // Width of the gap between platforms
+    float gapWidth = 300; // Width of the gap between platforms
     float speed = 20; // Speed of the platform movement
     float minWidth = 600; // Minimum width of the platform
-    float maxWidth = 1600; // Maximum width of the platform
+    float maxWidth = 1400; // Maximum width of the platform
     boolean hasSpawnedNewThisFrame = false; // Flag to track whether a new platform has been spawned in this frame
 
     public Platforms(MyVisual mv) {
@@ -33,7 +33,7 @@ public class Platforms {
 
             // Check if the last platform is ready to spawn a new one and no new platform has been spawned in this frame
             if (i == platforms.size() - 1 && !hasSpawnedNewThisFrame && platform.shouldSpawnNew()) {
-                float newX = platform.getX() + platform.getWidth() + gapWidth;
+                float newX = platform.getX() + platform.getWidth() + (gapWidth + mv.random(100));
                 platforms.add(new Platform(mv, newX, platform.getHeight(), mv.random(minWidth, maxWidth)));
                 hasSpawnedNewThisFrame = true; // Set the flag to true after spawning a new platform
             }
@@ -68,18 +68,9 @@ class Platform {
         mv.fill(100); // Set platform color to gray
         mv.rectMode(mv.CENTER); // Set rectangle mode to center
         mv.stroke(0, 0, 100);
+        mv.triangle(x - width / 2, y + 10, x, y + 60, x + width / 2, y + 10); // Draw platform
         mv.rect(x, y, width, 20); // Draw platform
 
-        // Render spikes if not already spawned
-        if (!hasSpawnedSpikes) {
-            renderSpikes();
-            hasSpawnedSpikes = true;
-        }
-    }
-
-    private void renderSpikes() {
-        mv.fill(255, 0, 0); // Set spike color to red
-        mv.triangle(x - width / 2, y - 10, x, y + 20, x + width / 2, y - 10); // Draw spikes
     }
 
     public boolean isVisible() {

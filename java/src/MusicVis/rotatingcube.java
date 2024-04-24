@@ -30,15 +30,18 @@ public class rotatingcube {
     void render() {
 
         float amt = (float)(mv.millis() - lastColorChange) / colorChangeInterval;
+        int audioIndex = (int)(mv.random(30, 512));
+        float audioValue = mv.getAudioBuffer().get(audioIndex);
         mv.pushMatrix();
         mv.colorMode(mv.HSB, 360, 100, 100);
         mv.translate(mv.width/2, mv.height/2 - 150); 
 
-        if (mv.millis() - lastColorChange > colorChangeInterval) {
+        if (amt >= 1.0) {
             for (int i = 0; i < num; i++) {
                 cubeColors[i] = (int) mv.random(360); // Change hue for each cube
             }
             lastColorChange = mv.millis(); // Update the last color change time
+            amt = 0.0f;
         }
 
         for(int i = 0; i < num; i++) {
@@ -46,7 +49,7 @@ public class rotatingcube {
             mv.pushMatrix();
             mv.rotateY(a + offset*i);
             mv.rotateX(a/2 + offset*i);
-            mv.box(325);
+            mv.box(325 + audioValue * 150);
             mv.popMatrix();
         }
 

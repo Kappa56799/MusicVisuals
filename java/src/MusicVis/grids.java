@@ -17,13 +17,14 @@ public class grids {
         mv.stroke(0);
         defineLights();
         
-        if (mv.millis() - lastColorChange > colorChangeInterval) {
+        float amt = (float)(mv.millis() - lastColorChange) / colorChangeInterval;
+        if (amt >= 1.0) {
             currentColor = nextColor;
             nextColor = mv.color(mv.random(70,500), mv.random(70,500), mv.random(70,500));
             lastColorChange = mv.millis();
+            amt = 0.0f;
         }
 
-        float amt = (float)(mv.millis() - lastColorChange) / colorChangeInterval;
 
         for (int x = 0; x <= mv.width; x += 60) {
             for (int y = 0; y <= mv.height; y += 60) {

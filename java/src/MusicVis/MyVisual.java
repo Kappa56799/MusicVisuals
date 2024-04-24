@@ -41,7 +41,7 @@ public class MyVisual extends Visual {
 
         getAudioPlayer().cue(0);
         getAudioPlayer().play();
-        // tree = new Tree(this);
+
         square = new square(this);
         raindrops = new Raindrops(this);
         platforms = new Platforms(this);
