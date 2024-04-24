@@ -10,13 +10,14 @@ public class MyVisual extends Visual {
     wave wave;
     Tree tree;
     grids grids;
-    matrix matrix;
     rotatingcube rotatingcube;
     randomline randomline;
     rainbow rainbow;
     movingobject movingobject;
     bigwave bigwave;
     Snowflake snowflake;
+    matrix matrix;
+
 
     public void settings() {
         // size(1024, 500);
@@ -46,13 +47,13 @@ public class MyVisual extends Visual {
         wave = new wave(this);
         tree = new Tree(this);
         grids = new grids(this);
-        matrix = new matrix(this);
         rotatingcube = new rotatingcube(this);
         randomline = new randomline(this);
         rainbow = new rainbow(this);
         movingobject = new movingobject(this);
         bigwave = new bigwave(this);
         snowflake = new Snowflake(this);
+        matrix = new matrix(this);
 
     }
 
@@ -80,6 +81,9 @@ public class MyVisual extends Visual {
         }  else if (key == '5') {
             rainbow.render();
             current = 5;
+        }  else if (key =='6') {
+            matrix.render();
+            current = 6;
         } else if (key == '7') {
             randomline.render();
             bigwave.render();
@@ -118,7 +122,10 @@ public class MyVisual extends Visual {
         } else if (current == 4) {
         } else if (current == 5) {
             rainbow.render();
-        } else if (current == 7) {
+        }   else if (current == 6) {
+            matrix.render();
+        }
+            else if (current == 7) {
             randomline.render();
             bigwave.render();
         }
