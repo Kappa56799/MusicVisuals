@@ -28,7 +28,7 @@ public class rainbow {
                 mv.noStroke();
                 mv.rect(x-10, y-10, 0, 0); // Draw rotated rectangle
                 mv.stroke(hue, 125, 100, 55);
-                mv.line(x-1, y-1, gridSize, 100); // Draw rotated line
+                mv.line(x-100, y+100, gridSize, 100); // Draw rotated line
                 mv.popMatrix(); // Restore original transformation matrix
             } 
         }

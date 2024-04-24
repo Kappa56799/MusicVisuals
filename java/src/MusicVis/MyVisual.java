@@ -4,7 +4,7 @@ import ie.tudublin.*;
 
 public class MyVisual extends Visual {
     // Tree tree;
-    cube cube;
+    square square;
     Raindrops raindrops;
     Platforms platforms;
     wave wave;
@@ -14,6 +14,7 @@ public class MyVisual extends Visual {
     rotatingcube rotatingcube;
     randomline randomline;
     rainbow rainbow;
+    movingobject movingobject;
 
     public void settings() {
         // size(1024, 500);
@@ -37,7 +38,7 @@ public class MyVisual extends Visual {
         getAudioPlayer().cue(0);
         getAudioPlayer().play();
         // tree = new Tree(this);
-        cube = new cube(this);
+        square = new square(this);
         raindrops = new Raindrops(this);
         platforms = new Platforms(this);
         wave = new wave(this);
@@ -47,6 +48,7 @@ public class MyVisual extends Visual {
         rotatingcube = new rotatingcube(this);
         randomline = new randomline(this);
         rainbow = new rainbow(this);
+        movingobject = new movingobject(this);
 
     }
 
@@ -57,6 +59,7 @@ public class MyVisual extends Visual {
 
     public void keyPressed() {
         if (key == '1') {
+            movingobject.render();
             raindrops.render();
             current = 1;
         } else if (key == '2') {
@@ -77,7 +80,7 @@ public class MyVisual extends Visual {
             current = 7;
         } else if (key == ' ') {
             spacePressed = true;
-            cube.update();
+            square.update();
         }
     }
 
@@ -91,13 +94,14 @@ public class MyVisual extends Visual {
     public void draw() {
         background(0);
         if (spacePressed) {
-            cube.update();
+            square.update();
         } else if (jumpTimer > 0) {
-            cube.update(); // Update cube position even if space bar isn't pressed
+            square.update(); // Update cube position even if space bar isn't pressed
             jumpTimer--; // Decrease the jump timer
         }
 
         if (current == 1) {
+            movingobject.render();
             raindrops.render();
         } else if (current == 2) {
             tree.render();
@@ -114,7 +118,7 @@ public class MyVisual extends Visual {
 
         // Render common elements
         wave.render();
-        cube.render();
+        square.render();
         platforms.render();
     }
 

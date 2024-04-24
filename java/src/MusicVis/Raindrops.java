@@ -13,7 +13,6 @@ public class Raindrops {
 
     public void render() {
         mv.pushMatrix(); // Save the current transformation matrix
-        mv.background(0); // Clear the background
         // Draw raindrops
         drawRaindrops();
         mv.popMatrix(); // Restore the transformation matrix
