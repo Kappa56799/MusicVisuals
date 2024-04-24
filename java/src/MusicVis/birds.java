@@ -15,6 +15,8 @@ public class birds {
     }
 
     public void render() {
+        mv.pushMatrix();
+        mv.hint(mv.DISABLE_DEPTH_TEST);
         int width = mv.width; // Define width
         int height = mv.height; // Define height
 
@@ -28,6 +30,8 @@ public class birds {
             }
         }
         flock.run();
+        mv.hint(mv.ENABLE_DEPTH_TEST);
+        mv.popMatrix();
     }
 }
 
@@ -52,7 +56,7 @@ class Boid {
         velocity = new PVector(mv.cos(angle), mv.sin(angle));
         position = new PVector(x, y);
         r = (float)8.0;
-        maxspeed = 2;
+        maxspeed = 8;
         maxforce = (float)0.03;
     }
 
