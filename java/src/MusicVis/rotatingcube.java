@@ -9,6 +9,7 @@ public class rotatingcube {
     float a;                 // Angle of rotation
     float offset;            // Angle offset between boxes
     int num = 12;            // Number of boxes
+    
 
     public rotatingcube(MyVisual mv) {
         this.mv = mv;
