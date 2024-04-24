@@ -75,7 +75,7 @@ public class MyVisual extends Visual {
             rotatingcube.render();
             current = 3;
         } else if (key == '4') {
-            snowflake.render();
+            matrix.render();
             current = 4;
         }  else if (key == '5') {
             rainbow.render();
@@ -116,6 +116,7 @@ public class MyVisual extends Visual {
             grids.render();
             rotatingcube.render();
         } else if (current == 4) {
+            matrix.render();
         } else if (current == 5) {
             rainbow.render();
         } else if (current == 7) {
