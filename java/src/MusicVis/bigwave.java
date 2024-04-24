@@ -55,6 +55,7 @@ public class bigwave {
     void renderWave() {
         // A simple way to draw the wave with an ellipse at each location
         mv.stroke(0);
+        mv.strokeWeight(1);
         // Smoothly change colors
         float hue = 0;
         float hueIncrement = 255.0f / yvalues.length;

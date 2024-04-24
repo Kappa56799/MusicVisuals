@@ -3,7 +3,7 @@ package MusicVis;
 public class movingobject {
     MyVisual mv;
     long lastChangeTime = 0; // Variable to store the last time color or size was changed
-    int interval = 200; // Interval in milliseconds for color and size change
+    int interval = 400; // Interval in milliseconds for color and size change
     int currentColor; // Variable to store the current color
     int nextColor; // Variable to store the next color
     float currentSize; // Variable to store the current size
@@ -22,7 +22,9 @@ public class movingobject {
         int audioIndex = (int)(mv.random(30, 512));
         float audioValue = mv.getAudioBuffer().get(audioIndex);
         
-        if (mv.millis() - lastChangeTime >= interval) {
+        float amt = (float)(mv.millis() - lastChangeTime) / interval;
+        if (amt >= 1.0) {
+
             // Change color
             currentColor = nextColor;
             nextColor = mv.color(mv.random(70,500), mv.random(70,500), mv.random(70,500));
@@ -31,9 +33,9 @@ public class movingobject {
             nextSize = mv.random(80, 150);
             // Update last change time
             lastChangeTime = mv.millis();
+            amt = 0.0f;
         }
 
-        float amt = (float)(mv.millis() - lastChangeTime) / interval;
         mv.pushMatrix();
         mv.lights();
         mv.fill(mv.lerpColor(currentColor, nextColor, amt));

@@ -1,6 +1,5 @@
 package MusicVis;
 
-
 import java.util.ArrayList;
 
 public class Platforms {
@@ -52,6 +51,7 @@ class Platform {
     float x; // X position of the platform
     float y; // Y position of the platform
     float width; // Width of the platform
+    boolean hasSpawnedSpikes = false; // Flag to track whether spikes have been spawned on this platform
 
     public Platform(MyVisual mv, float x, float y, float width) {
         this.mv = mv;
@@ -69,6 +69,17 @@ class Platform {
         mv.rectMode(mv.CENTER); // Set rectangle mode to center
         mv.stroke(0, 0, 100);
         mv.rect(x, y, width, 20); // Draw platform
+
+        // Render spikes if not already spawned
+        if (!hasSpawnedSpikes) {
+            renderSpikes();
+            hasSpawnedSpikes = true;
+        }
+    }
+
+    private void renderSpikes() {
+        mv.fill(255, 0, 0); // Set spike color to red
+        mv.triangle(x - width / 2, y - 10, x, y + 20, x + width / 2, y - 10); // Draw spikes
     }
 
     public boolean isVisible() {

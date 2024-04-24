@@ -10,25 +10,29 @@ public class wave {
 
     public wave(MyVisual mv) {
         this.mv = mv;
-        currentColor = mv.color(mv.random(70, 500), 100, 100);
+        currentColor = mv.color(mv.random(70,500), mv.random(70,500), mv.random(70,500));
         nextColor = mv.color(mv.random(70,500), mv.random(70,500), mv.random(70,500));
-
     }
+
     public void render() {
         mv.hint(mv.DISABLE_DEPTH_TEST);
         mv.strokeWeight(1);
 
         float amt = (float)(mv.millis() - lastColorChangeTime) / interval;
         // Check if 2 seconds have elapsed since the last color change
-        if (mv.millis() - lastColorChangeTime >= interval) {
+        if (amt >= 1.0) {
             // Change color
-            currentColor = mv.color(mv.random(70, 500), 100, 100);
+            currentColor = nextColor;
             nextColor = mv.color(mv.random(70,500), mv.random(70,500), mv.random(70,500));
             // Update last color change time
             lastColorChangeTime = mv.millis();
+            // Reset the interpolation factor
+            amt = 0.0f;
         }
 
-        mv.fill(mv.lerpColor(currentColor, nextColor, amt)); // Set the current color
+        // Set the current color
+        mv.fill(mv.lerpColor(currentColor, nextColor, amt));
+
         // We are going to draw a polygon out of the wave points
         mv.beginShape(); 
         
