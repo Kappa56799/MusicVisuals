@@ -8,8 +8,8 @@ public class Platforms {
     ArrayList<Platform> platforms;
     float gapWidth = 200; // Width of the gap between platforms
     float speed = 20; // Speed of the platform movement
-    float minWidth = 1600; // Minimum width of the platform
-    float maxWidth = 1920; // Maximum width of the platform
+    float minWidth = 600; // Minimum width of the platform
+    float maxWidth = 1600; // Maximum width of the platform
     boolean hasSpawnedNewThisFrame = false; // Flag to track whether a new platform has been spawned in this frame
 
     public Platforms(MyVisual mv) {
