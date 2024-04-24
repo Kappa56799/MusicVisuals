@@ -1,0 +1,187 @@
+package MusicVis;
+
+public class LSystem 
+{
+  MyVisual mv;
+  public LSystem(MyVisual mv) {
+      this.mv = mv;
+  }
+  int steps = 0;
+
+  String axiom;
+  String rule;
+  String production;
+
+  float startLength;
+  float drawLength;
+  float theta;
+
+  int generations;
+
+  LSystem() {
+    axiom = "F";
+    rule = "F+F-F";
+    startLength = (float)90.0;
+    theta = mv.radians((float)120.0);
+    reset();
+  }
+
+  void reset() {
+    production = axiom;
+    drawLength = startLength;
+    generations = 0;
+  }
+
+  int getAge() {
+    return generations;
+  }
+
+  void render() {
+    mv.translate(mv.width/2, mv.height/2);
+    steps += 5;          
+    if (steps > production.length()) {
+      steps = production.length();
+    }
+    for (int i = 0; i < steps; i++) {
+      char step = production.charAt(i);
+      if (step == 'F') {
+        mv.rect(0, 0, -drawLength, -drawLength);
+        mv.noFill();
+        mv.translate(0, -drawLength);
+      } 
+      else if (step == '+') {
+        mv.rotate(theta);
+      } 
+      else if (step == '-') {
+        mv.rotate(-theta);
+      } 
+      else if (step == '[') {
+        mv.pushMatrix();
+      } 
+      else if (step == ']') {
+        mv.popMatrix();            
+      }
+    }
+  }
+
+  void simulate(int gen) {
+    while (getAge() < gen) {
+      production = iterate(production, rule);
+    }
+  }
+
+  String iterate(String prod_, String rule_) {
+    drawLength = drawLength * (float)0.6;
+    generations++;
+    String newProduction = prod_;          
+    newProduction = newProduction.replaceAll("F", rule_);
+    return newProduction;
+  }
+}
+
+class PenroseSnowflakeLSystem extends LSystem {
+    MyVisual mv;
+
+    public PenroseSnowflakeLSystem(MyVisual mv) {
+        this.mv = mv;
+    }
+
+  String ruleF;
+
+  PenroseSnowflakeLSystem() {
+    axiom = "F3-F3-F3-F3-F";
+    ruleF = "F3-F3-F45-F++F3-F";
+    startLength = (float)450.0;
+    theta = mv.radians(18); 
+    reset();
+  }
+
+  void useRule(String r_) {
+    rule = r_;
+  }
+
+  void useAxiom(String a_) {
+    axiom = a_;
+  }
+
+  void useLength(float l_) {
+    startLength = l_;
+  }
+
+  void useTheta(float t_) {
+    theta = mv.radians(t_);
+  }
+
+  void reset() {
+    production = axiom;
+    drawLength = startLength;
+    generations = 0;
+  }
+
+  int getAge() {
+    return generations;
+  }
+
+  void render() {
+    mv.translate(mv.width, mv.height);
+    int repeats = 1;
+
+    steps += 3;          
+    if (steps > production.length()) {
+      steps = production.length();
+    }
+
+    for (int i = 0; i < steps; i++) {
+      char step = production.charAt(i);
+      if (step == 'F') {
+        for (int j = 0; j < repeats; j++) {
+          mv.line(0,0,0, -drawLength);
+          mv.translate(0, -drawLength);
+        }
+        repeats = 1;
+      } 
+      else if (step == '+') {
+        for (int j = 0; j < repeats; j++) {
+          mv.rotate(theta);
+        }
+        repeats = 1;
+      } 
+      else if (step == '-') {
+        for (int j =0; j < repeats; j++) {
+          mv.rotate(-theta);
+        }
+        repeats = 1;
+      } 
+      else if (step == '[') {
+        mv.pushMatrix();
+      } 
+      else if (step == ']') {
+        mv.popMatrix();
+      } 
+      else if ( (step >= 48) && (step <= 57) ) {
+        repeats += step - 48;
+      }
+    }
+  }
+
+
+  String iterate(String prod_, String rule_) {
+    String newProduction = "";
+    for (int i = 0; i < prod_.length(); i++) {
+      char step = production.charAt(i);
+      if (step == 'F') {
+        newProduction = newProduction + ruleF;
+      } 
+      else {
+        if (step != 'F') {
+          newProduction = newProduction + step;
+        }
+      }
+    }
+    drawLength = drawLength * (float)0.4;
+    generations++;
+    return newProduction;
+  }
+
+}
+
