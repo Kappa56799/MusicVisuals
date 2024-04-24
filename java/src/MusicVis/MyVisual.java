@@ -10,6 +10,7 @@ public class MyVisual extends Visual {
     wave wave;
     Tree tree;
     grids grids;
+    matrix matrix;
     rotatingcube rotatingcube;
     randomline randomline;
     rainbow rainbow;
@@ -18,7 +19,6 @@ public class MyVisual extends Visual {
     Snowflake snowflake;
     birds birds;
     balls balls;
-    matrix matrix;
 
     public void settings() {
         // size(1024, 500);
@@ -48,13 +48,13 @@ public class MyVisual extends Visual {
         wave = new wave(this);
         tree = new Tree(this);
         grids = new grids(this);
+        matrix = new matrix(this);
         rotatingcube = new rotatingcube(this);
         randomline = new randomline(this);
         rainbow = new rainbow(this);
         movingobject = new movingobject(this);
         bigwave = new bigwave(this);
         snowflake = new Snowflake(this);
-        matrix = new matrix(this);
         birds = new birds(this);
         balls = new balls(this);
 
