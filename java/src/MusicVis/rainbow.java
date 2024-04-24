@@ -1,5 +1,4 @@
 package MusicVis;
-import processing.core.*;
 
 public class rainbow {
     MyVisual mv;
@@ -16,7 +15,6 @@ public class rainbow {
         int width = mv.width;
         int height = mv.height;
 
-        mv.colorMode(PApplet.HSB, 360, 100, 100); // Set color mode to HSB
 
         for (int x = gridSize; x <= width - gridSize; x += gridSize) {
             for (int y = gridSize; y <= height - gridSize; y += gridSize) {

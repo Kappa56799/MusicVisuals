@@ -71,6 +71,7 @@ public class MyVisual extends Visual {
             current = 4;
         }  else if (key == '5') {
             rainbow.render();
+            current = 5;
         } else if (key == '7') {
             randomline.render();
             current = 7;

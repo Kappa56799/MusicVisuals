@@ -16,7 +16,6 @@ public class Tree {
 
     public void render() {
         mv.stroke(255);
-        mv.pushStyle();
 
         mv.hint(mv.DISABLE_DEPTH_TEST);
 
