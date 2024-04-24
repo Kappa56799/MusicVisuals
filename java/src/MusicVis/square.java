@@ -4,7 +4,7 @@ public class square {
     MyVisual mv;
     float x, y = 0;
     float velocity = 0; // Initial velocity
-    float gravity = (float) 0.6; // Strength of gravity
+    float gravity = 0.6f; // Strength of gravity
     boolean isJumping = false; // Flag to track whether the cube is currently jumping
     float jumpStrength = -15; // Strength of the jump
 

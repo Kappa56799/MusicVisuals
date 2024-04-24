@@ -44,9 +44,9 @@ public class movingobject {
         float lerpedSize = mv.lerp(currentSize - 50, nextSize - 50, amt);
         
         // Change height of the camera with mouseY
-        mv.camera((float)30, lerpedSize, (float)220.0, // eyeX, eyeY, eyeZ
-              (float)0.0, (float)0.0, (float)0.0, // centerX, centerY, centerZ
-              (float)0.0, (float)1.0, (float)0.0); // upX, upY, upZ
+        mv.camera(30f, lerpedSize, 220.0f, // eyeX, eyeY, eyeZ
+              0.0f, 0.0f, 0.0f, // centerX, centerY, centerZ
+              0.0f, 1.0f, 0.0f); // upX, upY, upZ
         
         mv.noStroke();
         

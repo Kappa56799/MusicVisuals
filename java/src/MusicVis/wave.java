@@ -2,7 +2,7 @@ package MusicVis;
 
 public class wave {
     MyVisual mv;
-    float yoff = (float) 0.0;  
+    float yoff = 0.0f;  
     long lastColorChangeTime = 0; // Variable to store the last time color was changed
     int interval = 1500; // Interval in milliseconds for color change
     int currentColor; // Variable to store the current color

@@ -53,8 +53,8 @@ public class grids {
     
         // Yellow spotlight from the front
         mv.spotLight(255, 255, 109,  // Color
-                (float)0, (float) 40, (float) 200,     // Position
-                (float) 0, (float) -0.5, (float) -0.5,  // Direction
-                (float) (mv.PI / 2), (float) 2);     // Angle, concentration
+                0f, 40f, 200f,     // Position
+                0f, -0.5f,-0.5f,  // Direction
+                (float) (mv.PI / 2), 2f);     // Angle, concentration
         }
 }

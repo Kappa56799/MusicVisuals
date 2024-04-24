@@ -44,8 +44,8 @@ class LSystem
     this.mv = mv;
     axiom = "F";
     rule = "F+F-F";
-    startLength = (float)380.0;
-    theta = mv.radians((float)120.0);
+    startLength = 380.0f;
+    theta = mv.radians(120.0f);
     reset();
   }
 
@@ -96,7 +96,7 @@ void render() {
   }
 
   String iterate(String prod_, String rule_) {
-    drawLength = drawLength * (float) 0.6;
+    drawLength = drawLength * 0.6f;
     generations++;
     String newProduction = prod_;          
     newProduction = newProduction.replaceAll("F", rule_);
@@ -126,7 +126,7 @@ void render() {
             ruleX = "+YF--ZF[3-WF--XF]+";
             ruleY = "-WF++XF[+++YF++ZF]-";
             ruleZ = "--YF++++WF[+ZF++++XF]--XF";
-            startLength = (float)2400;
+            startLength = 2400f;
             theta = mv.radians(36);
             reset();
         }
@@ -239,7 +239,7 @@ void render() {
       }
     }
 
-    drawLength = drawLength * (float) 0.5;
+    drawLength = drawLength * 0.5f;
     generations++;
     return newProduction;
   }
