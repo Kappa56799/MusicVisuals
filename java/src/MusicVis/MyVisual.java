@@ -85,6 +85,9 @@ public class MyVisual extends Visual {
         }  else if (key == '5') {
             rainbow.render();
             current = 5;
+        }  else if (key =='6') {
+            matrix.render();
+            current = 6;
         } else if (key == '7') {
             randomline.render();
             balls.render();
@@ -126,7 +129,10 @@ public class MyVisual extends Visual {
             birds.render();
         } else if (current == 5) {
             rainbow.render();
-        } else if (current == 7) {
+        }   else if (current == 6) {
+            matrix.render();
+        }
+            else if (current == 7) {
             randomline.render();
             balls.render();
             bigwave.render();
