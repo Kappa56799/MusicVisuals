@@ -5,9 +5,6 @@ public class Snowflake {
     PenroseLSystem ps;
     int width;
     int height;
-    int lastColorChange = 0;
-    int colorChangeInterval = 1500;
-    int currentColor, nextColor;
     public Snowflake(MyVisual mv) {
         this.mv = mv;
         ps = new PenroseLSystem(mv); // Pass mv to PenroseSnowflakeLSystem constructor
@@ -17,18 +14,10 @@ public class Snowflake {
 
     public void render() {
 
-      if (mv.millis() - lastColorChange > colorChangeInterval) {
-          currentColor = nextColor;
-          nextColor = mv.color(mv.random(70,500), mv.random(70,500), mv.random(70,500));
-          lastColorChange = mv.millis();
-      }
-
-      float amt = (float)(mv.millis() - lastColorChange) / colorChangeInterval;
       mv.hint(mv.DISABLE_DEPTH_TEST);
       mv.pushMatrix();  
       ps.simulate(4);
       mv.strokeWeight(4);
-      mv.background(0);
       ps.render();
       mv.popMatrix();
       mv.hint(mv.ENABLE_DEPTH_TEST);
@@ -55,7 +44,7 @@ class LSystem
     this.mv = mv;
     axiom = "F";
     rule = "F+F-F";
-    startLength = (float)190.0;
+    startLength = (float)380.0;
     theta = mv.radians((float)120.0);
     reset();
   }
@@ -125,6 +114,9 @@ void render() {
   String ruleY;
   String ruleZ;
   MyVisual mv;
+  int lastColorChange = 0;
+  int colorChangeInterval = 1500;
+  int currentColor, nextColor;
 
         PenroseLSystem(MyVisual mv) {
             super(mv);
@@ -134,7 +126,7 @@ void render() {
             ruleX = "+YF--ZF[3-WF--XF]+";
             ruleY = "-WF++XF[+++YF++ZF]-";
             ruleZ = "--YF++++WF[+ZF++++XF]--XF";
-            startLength = (float)460.0;
+            startLength = (float)2400;
             theta = mv.radians(36);
             reset();
         }
@@ -166,7 +158,14 @@ void render() {
   }
 
   void render() {
-    mv.translate(width - 400, height/2 - 300);
+    if (mv.millis() - lastColorChange > colorChangeInterval) {
+        currentColor = nextColor;
+        nextColor = mv.color(mv.random(70,500), mv.random(70,500), mv.random(70,500));
+        lastColorChange = mv.millis();
+    }
+
+    float amt = (float)(mv.millis() - lastColorChange) / colorChangeInterval;
+    mv.translate(width/2, height/2);
     int pushes = 0;
     int repeats = 5;
     steps += 20;          
@@ -177,7 +176,7 @@ void render() {
     for (int i = 0; i < steps; i++) {
       char step = production.charAt(i);
       if (step == 'F') {
-        mv.stroke(255, 60);
+        mv.stroke(mv.lerpColor(currentColor, nextColor, amt), 60);
         for (int j = 0; j < repeats; j++) {
           mv.line(0, 0, 0, -drawLength);
           mv.noFill();

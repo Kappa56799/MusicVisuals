@@ -16,8 +16,9 @@ public class MyVisual extends Visual {
     movingobject movingobject;
     bigwave bigwave;
     Snowflake snowflake;
+    birds birds;
+    balls balls;
     matrix matrix;
-
 
     public void settings() {
         // size(1024, 500);
@@ -54,6 +55,8 @@ public class MyVisual extends Visual {
         bigwave = new bigwave(this);
         snowflake = new Snowflake(this);
         matrix = new matrix(this);
+        birds = new birds(this);
+        balls = new balls(this);
 
     }
 
@@ -70,13 +73,14 @@ public class MyVisual extends Visual {
             current = 1;
         } else if (key == '2') {
             tree.render();
+            birds.render();
             current = 2;
         } else if (key == '3') {
             grids.render();
             rotatingcube.render();
             current = 3;
         } else if (key == '4') {
-            snowflake.render();
+            birds.render();
             current = 4;
         }  else if (key == '5') {
             rainbow.render();
@@ -86,6 +90,7 @@ public class MyVisual extends Visual {
             current = 6;
         } else if (key == '7') {
             randomline.render();
+            balls.render();
             bigwave.render();
             current = 7;
         } else if (key == ' ') {
@@ -116,10 +121,12 @@ public class MyVisual extends Visual {
             raindrops.render();
         } else if (current == 2) {
             tree.render();
+            birds.render();
         } else if (current == 3) {
             grids.render();
             rotatingcube.render();
         } else if (current == 4) {
+            birds.render();
         } else if (current == 5) {
             rainbow.render();
         }   else if (current == 6) {
@@ -127,6 +134,7 @@ public class MyVisual extends Visual {
         }
             else if (current == 7) {
             randomline.render();
+            balls.render();
             bigwave.render();
         }
 
