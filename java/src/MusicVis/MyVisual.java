@@ -17,6 +17,7 @@ public class MyVisual extends Visual {
     movingobject movingobject;
     bigwave bigwave;
     Snowflake snowflake;
+    balls balls;
 
     public void settings() {
         // size(1024, 500);
@@ -53,6 +54,7 @@ public class MyVisual extends Visual {
         movingobject = new movingobject(this);
         bigwave = new bigwave(this);
         snowflake = new Snowflake(this);
+        balls = new balls(this);
 
     }
 
@@ -82,6 +84,7 @@ public class MyVisual extends Visual {
             current = 5;
         } else if (key == '7') {
             randomline.render();
+            balls.render();
             bigwave.render();
             current = 7;
         } else if (key == ' ') {
@@ -121,6 +124,7 @@ public class MyVisual extends Visual {
             rainbow.render();
         } else if (current == 7) {
             randomline.render();
+            balls.render();
             bigwave.render();
         }
 

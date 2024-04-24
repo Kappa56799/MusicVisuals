@@ -5,7 +5,7 @@ public class waveForm {
     MyVisual mv;
     int totalPts = 10000;
     float steps = totalPts + 1;
-  
+
     void setup() {
     mv.stroke(255);
     mv.frameRate(1);
