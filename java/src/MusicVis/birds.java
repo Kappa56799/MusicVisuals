@@ -40,6 +40,10 @@ class Boid {
     float r;
     float maxforce;    // Maximum steering force
     float maxspeed;    // Maximum speed
+    long lastColorChangeTime = 0; // Variable to store the last time color was changed
+    int interval = 1500; // Interval in milliseconds for color change
+    int currentColor; // Variable to store the current color
+    int nextColor; // Variable to store the next color
 
     Boid(float x, float y, MyVisual mv) {
         this.mv = mv;
@@ -114,8 +118,16 @@ void run(ArrayList<Boid> boids) {
     float theta = velocity.heading2D() + mv.radians(90f);
     // heading2D() above is now heading() but leaving old syntax until Processing.js catches up
     
-    mv.fill(200, 100);
-    mv.stroke(255);
+    float amt = (float)(mv.millis() - lastColorChangeTime) / interval;
+    if (mv.millis() - lastColorChangeTime >= interval) {
+        // Change color
+        currentColor = mv.color(mv.random(70, 500), 100, 100);
+        nextColor = mv.color(mv.random(70,500), mv.random(70,500), mv.random(70,500));
+        // Update last color change time
+        lastColorChangeTime = mv.millis();
+    }
+    mv.fill(200);
+    mv.stroke(mv.lerpColor(currentColor, nextColor, amt));
     mv.pushMatrix();
     mv.translate(position.x, position.y);
     mv.rotate(theta);
@@ -138,7 +150,7 @@ void run(ArrayList<Boid> boids) {
   // Separation
   // Method checks for nearby boids and steers away
   PVector separate (ArrayList<Boid> boids) {
-    float desiredseparation = 25.0f;
+    float desiredseparation = 80.0f;
     PVector steer = new PVector(0, 0, 0);
     int count = 0;
     // For every boid in the system, check if it's too close
