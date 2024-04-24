@@ -15,6 +15,7 @@ public class MyVisual extends Visual {
     randomline randomline;
     rainbow rainbow;
     movingobject movingobject;
+    bigwave bigwave;
 
     public void settings() {
         // size(1024, 500);
@@ -49,6 +50,7 @@ public class MyVisual extends Visual {
         randomline = new randomline(this);
         rainbow = new rainbow(this);
         movingobject = new movingobject(this);
+        bigwave = new bigwave(this);
 
     }
 
@@ -77,6 +79,7 @@ public class MyVisual extends Visual {
             current = 5;
         } else if (key == '7') {
             randomline.render();
+            bigwave.render();
             current = 7;
         } else if (key == ' ') {
             spacePressed = true;
@@ -114,6 +117,7 @@ public class MyVisual extends Visual {
             rainbow.render();
         } else if (current == 7) {
             randomline.render();
+            bigwave.render();
         }
 
         // Render common elements
