@@ -1,7 +1,7 @@
-
 package c22376553;
 
 import MusicVis.MyVisual;
+
 public class IteratingDots {
     MyVisual mv;
     float cy = 0;
@@ -13,7 +13,7 @@ public class IteratingDots {
     }
 
     public void render() {
-        int gridSize = 80;
+        int gridSize = 50;
         int width = mv.width;
         int height = mv.height;
 
@@ -32,6 +32,20 @@ public class IteratingDots {
                 mv.rect(x-1, y-1, 3, 3); // Draw rotated rectangle
                 mv.stroke(hue, 100, 100, 100);
                 mv.line(x-1, y-1, gridSize, 0); // Draw rotated line
+                
+                // Add some cool animations
+                float sizeOffset = mv.map(mv.sin(angle), -1, 1, -10, 10); // Size offset based on sine wave
+                mv.ellipse(x, y, 10 + sizeOffset, 10 + sizeOffset); // Changing size with sine wave
+                
+                // Apply bouncing effect to specific elements
+                if (x % (gridSize * 3) == 0 && y % (gridSize * 3) == 0) {
+                    float bounceOffsetX = mv.sin(angle * 2) * 20; // Horizontal bounce offset
+                    float bounceOffsetY = mv.cos(angle * 2) * 20; // Vertical bounce offset
+                    mv.translate(bounceOffsetX, bounceOffsetY); // Apply bounce offset
+                    mv.fill(0, 0, 100, 20); // Semi-transparent fill
+                    mv.rect(x, y, 50 + mv.random(10), 50 + mv.random(10)); // Randomly changing size and shape
+                }
+                
                 mv.popMatrix(); // Restore original transformation matrix
             } 
         }

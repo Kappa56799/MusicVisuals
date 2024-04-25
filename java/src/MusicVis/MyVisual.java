@@ -24,6 +24,8 @@ public class MyVisual extends Visual {
     balls balls;
     FlowerBloom flowerBloom;
     spiral spiral;
+    nodes nodes;  
+    IteratingDots iteratingDots;
 
 	  public float smothedAmplitude = 0;
     public void settings() {
@@ -64,7 +66,10 @@ public class MyVisual extends Visual {
         birds = new birds(this);
         balls = new balls(this);
         flowerBloom = new FlowerBloom(this);
-        spiral = new spiral(this);
+        spiral = new spiral(this);  
+        nodes = new nodes(this);
+        iteratingDots = new IteratingDots(this);
+            
 
     }
 
@@ -96,6 +101,7 @@ public class MyVisual extends Visual {
             spiral.render();
             current = 5;
         }  else if (key =='6') {
+            iteratingDots.render();
             current = 6;
         } else if (key == '7') {
             randomline.render();
@@ -141,6 +147,7 @@ public class MyVisual extends Visual {
             rainbow.render();
             spiral.render();
         }   else if (current == 6) {
+              iteratingDots.render();
         }
             else if (current == 7) {
             randomline.render();

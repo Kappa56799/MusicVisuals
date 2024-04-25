@@ -11,7 +11,7 @@ public class matrix {
     PFont theFont;
     ArrayList<ArrayList<CharInfo>> streams;
     long lastChangeTime = 0; // Variable to store the last time color or size was changed
-    int interval = 100; // Interval in milliseconds for color and size change
+    int interval = 50; // Interval in milliseconds for color and size change
     int lastRenderedFrame = -1; // Last frame when rendering occurred
 
     public matrix(MyVisual mv) {

@@ -7,7 +7,7 @@ public class FlowerBloom {
     int petals = 40; // Number of petals
     float[] angles; // Angles for each petal
     long lastChangeTime = 0; // Variable to store the last time color or size was changed
-    int interval = 400; // Interval in milliseconds for color and size change
+    int interval = 1000; // Interval in milliseconds for color and size change
     int currentColor; // Variable to store the current color
     int nextColor; // Variable to store the next color
     float currentSize; // Variable to store the current size
@@ -29,7 +29,6 @@ public class FlowerBloom {
     }
 
     public void render() {
-
         // Render the flower petals
         renderDynamicBackground();
         renderPetals();
@@ -75,10 +74,10 @@ void renderPetals() {
         float y = mv.height / 2 + mv.sin(angles[i]) * petalOffset;
 
         // Interpolate petal size
-        float petalSize = mv.lerp(currentSize - 50, nextSize - 50, amt);
+        float petalSize = mv.lerp(currentSize, nextSize, amt);
 
         mv.fill(mv.lerpColor(currentColor, nextColor, amt)); // Set petal color
-        mv.ellipse(x, y, petalSize, petalSize); // Draw petals
+        mv.ellipse(x, y, mv.lerp(currentSize, nextSize, amt), mv.lerp(currentSize, nextSize, amt )); // Draw petals
 
         // Update angle for next frame
         angles[i] += 0.02; // You can adjust the speed of petal movement here
@@ -92,6 +91,20 @@ void renderDynamicBackground() {
     float hueOffset = mv.random(360); // Random hue offset to vary colors
     float rotationSpeed = 0.01f; // Speed of rotation
 
+    float amt = (float)(mv.millis() - lastChangeTime) / interval;
+
+      if (amt >= 1.0) {
+
+          // Change color
+          currentColor = nextColor;
+          nextColor = mv.color(mv.random(70,500), mv.random(70,500), mv.random(70,500));
+          // Change size
+          currentSize = nextSize;
+          nextSize = mv.random(80, 150);
+          // Update last change time
+          lastChangeTime = mv.millis();
+          amt = 0.0f;
+      }
     // Render animated shapes
     mv.noStroke();
     for (int i = 0; i < numShapes; i++) {
@@ -103,7 +116,7 @@ void renderDynamicBackground() {
 
         // Set color based on angle and frame count
         float hue = (hueOffset + angle * mv.degrees(rotationSpeed) + mv.frameCount) % 360;
-        mv.fill(hue, 360, 360);
+        mv.fill(mv.lerpColor(currentColor, nextColor, amt));
         
         // Draw shape
         mv.ellipse(x, y, shapeSize, shapeSize);
