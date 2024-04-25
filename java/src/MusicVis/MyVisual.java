@@ -22,7 +22,9 @@ public class MyVisual extends Visual {
     Snowflake snowflake;
     birds birds;
     balls balls;
+    FlowerBloom flowerBloom;
 
+	  public float smothedAmplitude = 0;
     public void settings() {
         // size(1024, 500);
 
@@ -60,6 +62,7 @@ public class MyVisual extends Visual {
         snowflake = new Snowflake(this);
         birds = new birds(this);
         balls = new balls(this);
+        flowerBloom = new FlowerBloom(this);
 
     }
 
@@ -83,13 +86,13 @@ public class MyVisual extends Visual {
             rotatingcube.render();
             current = 3;
         } else if (key == '4') {
-            birds.render();
+            matrix.render();
+            flowerBloom.render();
             current = 4;
         }  else if (key == '5') {
             rainbow.render();
             current = 5;
         }  else if (key =='6') {
-            matrix.render();
             current = 6;
         } else if (key == '7') {
             randomline.render();
@@ -129,11 +132,11 @@ public class MyVisual extends Visual {
             grids.render();
             rotatingcube.render();
         } else if (current == 4) {
-            birds.render();
+            matrix.render();
+            flowerBloom.render();
         } else if (current == 5) {
             rainbow.render();
         }   else if (current == 6) {
-            matrix.render();
         }
             else if (current == 7) {
             randomline.render();
