@@ -15,14 +15,14 @@ public class rainbow {
         int gridSize = 10;
         int width = mv.width;
         int height = mv.height;
-        float centerX = width / 5.0f; // Calculate center X coordinate
-        float centerY = height / 7.0f; // Calculate center Y coordinate
+        float centerX = width / 2.0f; // Calculate center X coordinate
+        float centerY = height / 2.0f; // Calculate center Y coordinate
     
         for (int x = 0; x <= width; x += gridSize) {
             for (int y = 0; y <= height; y += gridSize) {
                 float r = mv.dist(x, y, centerX, centerY); // Distance from center
                 float hue = (colorOffset + r) % 360; // Hue based on distance
-                mv.fill(hue, 20, 200);
+                mv.fill(hue, 20, 30);
                 
                 mv.pushMatrix(); // Save current transformation matrix
                 mv.translate(x, y); // Move origin to current dot position

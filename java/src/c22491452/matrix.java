@@ -51,8 +51,8 @@ public class matrix {
         for (ArrayList<CharInfo> chars : streams) {
             int numChars = chars.size();
             for (int i = 0; i < numChars; i++) {
-                float alpha = mv.map(i, 0, numChars - 100, 170, 55);
-                mv.fill(0, 250, 75, alpha);
+                float alpha = mv.map(i, 0, numChars - 255, 255, 55);
+                mv.fill(255, 150, 255, alpha);
                 if (i == numChars - 1) {
                     mv.fill(255, 255, 250);
                 }
