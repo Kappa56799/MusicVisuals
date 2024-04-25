@@ -1,6 +1,6 @@
 package c22376553;
 import MusicVis.MyVisual;
-
+import c22486382.bigwave;
 public class FlowerBloom {
     MyVisual mv;
     bigwave wave; // Using the bigwave class for wave motion

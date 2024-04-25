@@ -1,4 +1,4 @@
-package c22376553;
+package c22486382;
 import MusicVis.MyVisual;
 
 public class bigwave {
@@ -56,7 +56,7 @@ public class bigwave {
     void renderWave() {
         // A simple way to draw the wave with an ellipse at each location
         mv.stroke(0);
-        mv.strokeWeight(1);
+        mv.strokeWeight(4);
         // Smoothly change colors
         float hue = 0;
         float hueIncrement = 255.0f / yvalues.length;
