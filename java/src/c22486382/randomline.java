@@ -1,4 +1,5 @@
-package MusicVis;
+package c22486382;
+import MusicVis.MyVisual;
 
 public class randomline {
     int num = 350;

@@ -1,4 +1,5 @@
-package MusicVis;
+package c22491452;
+import MusicVis.MyVisual;
 
 public class spiral {
 

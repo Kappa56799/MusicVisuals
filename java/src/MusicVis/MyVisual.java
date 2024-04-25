@@ -1,6 +1,9 @@
 package MusicVis;
 
 import ie.tudublin.*;
+import c22376553.*; // Kacper Palka
+import c22491452.*;
+import c22486382.*;
 
 public class MyVisual extends Visual {
     // Tree tree;

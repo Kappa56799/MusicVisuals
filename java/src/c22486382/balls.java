@@ -1,4 +1,5 @@
-package MusicVis;
+package c22486382;
+import MusicVis.MyVisual;
 
 public class balls {
     MyVisual mv;
@@ -21,7 +22,7 @@ public class balls {
         mv.fill(255, 204);
     }
 
-    void render() {
+    public void render() {
         for (Ball ball : balls) {
             if (ball != null) {
                 ball.collide();

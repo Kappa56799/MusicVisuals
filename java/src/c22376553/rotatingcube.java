@@ -1,4 +1,5 @@
-package MusicVis;
+package c22376553;
+import MusicVis.MyVisual;
 
 public class rotatingcube {
     int lastColorChange = 0;
@@ -27,7 +28,7 @@ public class rotatingcube {
 
     }
 
-    void render() {
+    public void render() {
 
         float amt = (float)(mv.millis() - lastColorChange) / colorChangeInterval;
         int audioIndex = (int)(mv.random(30, 512));

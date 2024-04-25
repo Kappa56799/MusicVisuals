@@ -1,5 +1,5 @@
-package MusicVis;
-
+package c22376553;
+import MusicVis.MyVisual;
 public class square {
     MyVisual mv;
     float x, y = 0;

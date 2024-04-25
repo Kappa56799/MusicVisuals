@@ -1,4 +1,6 @@
-package MusicVis;
+package c22376553;
+
+import MusicVis.MyVisual;
 
 public class movingobject {
     MyVisual mv;

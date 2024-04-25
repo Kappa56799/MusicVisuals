@@ -1,4 +1,5 @@
-package MusicVis;
+package c22376553;
+import MusicVis.MyVisual;
 
 import java.util.ArrayList; // Import ArrayList class
 import processing.core.PVector; // Import PVector class

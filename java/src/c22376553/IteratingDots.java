@@ -1,6 +1,7 @@
-package MusicVis;
-import processing.core.*;
 
+package c22376553;
+
+import MusicVis.MyVisual;
 public class IteratingDots {
     MyVisual mv;
     float cy = 0;
@@ -16,7 +17,7 @@ public class IteratingDots {
         int width = mv.width;
         int height = mv.height;
 
-        mv.colorMode(PApplet.HSB, 360, 100, 100); // Set color mode to HSB
+        mv.colorMode(mv.HSB, 360, 100, 100); // Set color mode to HSB
 
         for (int x = gridSize; x <= width - gridSize; x += gridSize) {
             for (int y = gridSize; y <= height - gridSize; y += gridSize) {

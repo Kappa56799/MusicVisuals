@@ -1,4 +1,5 @@
-package MusicVis;
+package c22486382;
+import MusicVis.MyVisual;
 
 public class grids {
     int lastColorChange = 0;
@@ -10,7 +11,7 @@ public class grids {
     }
 
 
-    void render() {
+    public void render() {
         mv.pushStyle();
         mv.hint(mv.DISABLE_DEPTH_TEST);
 

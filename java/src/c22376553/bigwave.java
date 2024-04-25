@@ -1,4 +1,5 @@
-package MusicVis;
+package c22376553;
+import MusicVis.MyVisual;
 
 public class bigwave {
     MyVisual mv;
@@ -24,7 +25,7 @@ public class bigwave {
         yvalues = new float[w/xspacing];
     }
 
-    void render() {
+    public void render() {
         mv.hint(mv.DISABLE_DEPTH_TEST);
         calcWave();
         renderWave();
