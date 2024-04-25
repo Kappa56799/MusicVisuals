@@ -23,6 +23,7 @@ public class MyVisual extends Visual {
     birds birds;
     balls balls;
     FlowerBloom flowerBloom;
+    spiral spiral;
 
 	  public float smothedAmplitude = 0;
     public void settings() {
@@ -63,6 +64,7 @@ public class MyVisual extends Visual {
         birds = new birds(this);
         balls = new balls(this);
         flowerBloom = new FlowerBloom(this);
+        spiral = new spiral(this);
 
     }
 
@@ -91,6 +93,7 @@ public class MyVisual extends Visual {
             current = 4;
         }  else if (key == '5') {
             rainbow.render();
+            spiral.render();
             current = 5;
         }  else if (key =='6') {
             current = 6;
@@ -136,6 +139,7 @@ public class MyVisual extends Visual {
             flowerBloom.render();
         } else if (current == 5) {
             rainbow.render();
+            spiral.render();
         }   else if (current == 6) {
         }
             else if (current == 7) {
