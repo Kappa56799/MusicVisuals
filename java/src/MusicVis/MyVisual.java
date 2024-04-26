@@ -24,7 +24,6 @@ public class MyVisual extends Visual {
     balls balls;
     FlowerBloom flowerBloom;
     spiral spiral;
-    nodes nodes;
     IteratingDots iteratingDots;
 
     public float smothedAmplitude = 0;
@@ -68,7 +67,6 @@ public class MyVisual extends Visual {
         balls = new balls(this);
         flowerBloom = new FlowerBloom(this);
         spiral = new spiral(this);
-        nodes = new nodes(this);
         iteratingDots = new IteratingDots(this);
 
     }

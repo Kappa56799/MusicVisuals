@@ -13,7 +13,7 @@ public class rainbow {
     }
 
     public void render() {
-        int gridSize = 10;
+        int gridSize = 10; 
         int width = mv.width;
         int height = mv.height;
         float centerX = width / 2.0f; // Calculate center X coordinate
