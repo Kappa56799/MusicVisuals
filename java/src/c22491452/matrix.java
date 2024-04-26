@@ -1,4 +1,5 @@
 package c22491452;
+
 import MusicVis.MyVisual;
 
 import processing.core.PApplet;
@@ -65,7 +66,6 @@ public class matrix {
             }
         }
     }
-
 
     public char updateStreams() {
         int charType = mv.round(mv.random(1));

@@ -13,66 +13,55 @@ public class nodes {
     public nodes(MyVisual mv) {
         this.mv = mv;
         particles = new ArrayList<>();
-        numParticles = 1;
-        minDistance = 300;
+        numParticles = 10; // Number of particles
+        minDistance = 50; // Minimum distance for connection
+        initializeParticles();
     }
 
-    public void render() {
-        mv.smooth();
-        int min = 100;
-
-        Particle p = new Particle(mv.random(min, mv.width - min), mv.random(min, mv.height - min), 5);
-        particles.add(p);
-        p.update();
-
-        drawParticles();
-    }
-
-void drawParticles() {
-    mv.background(20);
-
-    // Iterate over each particle in the list
-    for (int i = 0; i < particles.size(); i++) {
-        Particle p1 = particles.get(i); // Get the current particle
-
-        // Iterate over subsequent particles in the list
-        for (int j = i + 1; j < particles.size(); j++) {
-            Particle p2 = particles.get(j); // Get the next particle
-
-            // Calculate the distance between the two particles
-            float distance = mv.dist(p1.x, p1.y, p2.x, p2.y);
-
-            // Check if the distance is less than the minimum distance
-            if (distance < minDistance) {
-                // Calculate stroke color based on distance
-                mv.stroke(mv.color(255, 0, 0), 255 - ((distance / minDistance) * 255));
-                mv.strokeWeight(1);
-                mv.line(p1.x, p1.y, p2.x, p2.y); // Draw a line between the two particles
-            }
+    public void initializeParticles() {
+        for (int i = 0; i < numParticles; i++) {
+            Particle p = new Particle(
+                    mv.random(mv.width),
+                    mv.random(mv.height),
+                    mv.random(10, 20));
+            particles.add(p);
         }
     }
 
-    // Draw each particle
+    public void render() {
+        mv.background(20);
+        mv.smooth();
 
-    // Assuming particles is an array or a collection
-    for (int i = 0; i < 1; i++) {
-        Particle p = particles.get(i);
-        p.draw();
-        p.update();
+        // Draw connections between particles
+        for (int i = 0; i < particles.size(); i++) {
+            Particle p1 = particles.get(i);
+            for (int j = i + 1; j < particles.size(); j++) {
+                Particle p2 = particles.get(j);
+                float distance = mv.dist(p1.x, p1.y, p2.x, p2.y);
+                if (distance < minDistance) {
+                    mv.stroke(255);
+                    mv.strokeWeight(1);
+                    mv.line(p1.x, p1.y, p2.x, p2.y);
+                }
+            }
+        }
+
+        // Draw particles
+        for (Particle p : particles) {
+            p.update();
+            p.draw();
+        }
     }
 
-}
-
     class Particle {
-        float px, py;
         float x, y;
         float rx, ry;
         float rT;
         float size;
 
         Particle(float x, float y, float size) {
-            this.px = x;
-            this.py = y;
+            this.x = x;
+            this.y = y;
             this.size = size;
             this.rx = mv.random(20, 100);
             this.ry = this.rx;
@@ -84,8 +73,8 @@ void drawParticles() {
 
         void update() {
             float t = mv.millis() / rT;
-            x = (int) (px + rx * mv.cos(t));
-            y = (int) (py + ry * mv.sin(t));
+            x = (int) (x + rx * mv.cos(t));
+            y = (int) (y + ry * mv.sin(t));
         }
 
         void draw() {
@@ -94,5 +83,5 @@ void drawParticles() {
             mv.ellipse(x, y, size, size);
         }
     }
-}
 
+}
