@@ -1,4 +1,5 @@
 package c22486382;
+
 import MusicVis.MyVisual;
 
 public class grids {
@@ -6,10 +7,10 @@ public class grids {
     int colorChangeInterval = 1500;
     int currentColor, nextColor;
     MyVisual mv;
+
     public grids(MyVisual mv) {
         this.mv = mv;
     }
-
 
     public void render() {
         mv.pushStyle();
@@ -17,15 +18,14 @@ public class grids {
 
         mv.stroke(0);
         defineLights();
-        
-        float amt = (float)(mv.millis() - lastColorChange) / colorChangeInterval;
+
+        float amt = (float) (mv.millis() - lastColorChange) / colorChangeInterval;
         if (amt >= 1.0) {
             currentColor = nextColor;
-            nextColor = mv.color(mv.random(70,500), mv.random(70,500), mv.random(70,500));
+            nextColor = mv.color(mv.random(70, 500), mv.random(70, 500), mv.random(70, 500));
             lastColorChange = mv.millis();
             amt = 0.0f;
         }
-
 
         for (int x = 0; x <= mv.width; x += 60) {
             for (int y = 0; y <= mv.height; y += 60) {
@@ -42,21 +42,20 @@ public class grids {
         mv.popStyle();
     }
 
-    
     void defineLights() {
         mv.ambientLight(0, 0, 100);
         // Orange point light on the right
-        mv.pointLight(150, 100, 0,   // Color
-                   200, -150, 0); // Position
-    
+        mv.pointLight(150, 100, 0, // Color
+                200, -150, 0); // Position
+
         // Blue directional light from the left
         mv.directionalLight(0, 102, 255, // Color
-                         1, 0, 0);    // The x-, y-, z-axis direction
-    
+                1, 0, 0); // The x-, y-, z-axis direction
+
         // Yellow spotlight from the front
-        mv.spotLight(255, 255, 109,  // Color
-                0f, 40f, 200f,     // Position
-                0f, -0.5f,-0.5f,  // Direction
-                (float) (mv.PI / 2), 2f);     // Angle, concentration
-        }
+        mv.spotLight(255, 255, 109, // Color
+                0f, 40f, 200f, // Position
+                0f, -0.5f, -0.5f, // Direction
+                (float) (mv.PI / 2), 2f); // Angle, concentration
+    }
 }

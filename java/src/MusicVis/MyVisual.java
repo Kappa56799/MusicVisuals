@@ -2,7 +2,7 @@ package MusicVis;
 
 import ie.tudublin.*;
 import c22376553.*; // Kacper Palka
-import c22491452.*;
+import c22491452.*; //Pavels Strelnikovs
 import c22486382.*;
 
 public class MyVisual extends Visual {
@@ -24,10 +24,10 @@ public class MyVisual extends Visual {
     balls balls;
     FlowerBloom flowerBloom;
     spiral spiral;
-    nodes nodes;  
     IteratingDots iteratingDots;
 
-	  public float smothedAmplitude = 0;
+    public float smothedAmplitude = 0;
+
     public void settings() {
         // size(1024, 500);
 
@@ -66,10 +66,8 @@ public class MyVisual extends Visual {
         birds = new birds(this);
         balls = new balls(this);
         flowerBloom = new FlowerBloom(this);
-        spiral = new spiral(this);  
-        nodes = new nodes(this);
+        spiral = new spiral(this);
         iteratingDots = new IteratingDots(this);
-            
 
     }
 
@@ -80,7 +78,7 @@ public class MyVisual extends Visual {
 
     public void keyPressed() {
         if (key == '1') {
-            snowflake.render(); 
+            snowflake.render();
             movingobject.render();
             raindrops.render();
             current = 1;
@@ -96,11 +94,11 @@ public class MyVisual extends Visual {
             matrix.render();
             flowerBloom.render();
             current = 4;
-        }  else if (key == '5') {
+        } else if (key == '5') {
             rainbow.render();
             spiral.render();
             current = 5;
-        }  else if (key =='6') {
+        } else if (key == '6') {
             iteratingDots.render();
             current = 6;
         } else if (key == '7') {
@@ -131,7 +129,7 @@ public class MyVisual extends Visual {
         }
 
         if (current == 1) {
-            snowflake.render(); 
+            snowflake.render();
             movingobject.render();
             raindrops.render();
         } else if (current == 2) {
@@ -146,17 +144,16 @@ public class MyVisual extends Visual {
         } else if (current == 5) {
             rainbow.render();
             spiral.render();
-        }   else if (current == 6) {
-              iteratingDots.render();
-        }
-            else if (current == 7) {
+        } else if (current == 6) {
+            iteratingDots.render();
+        } else if (current == 7) {
             randomline.render();
             balls.render();
             bigwave.render();
         }
 
         // Render common elements
-        
+
         wave.render();
         square.render();
         platforms.render();
