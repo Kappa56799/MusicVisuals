@@ -1,34 +1,30 @@
 # Music Visualiser Project
 
-Name: Kacper Palka
-
-Student Number: C22376553
-
-
-Name: Miron Nekrasovs
-
-Student Number: C22486382
-
-
-Name: Pavels Strelnikovs
-
-Student Number: C22491452
+| Student Names | Student Numbers |
+|-----------|-----------|
+|Kacper Palka| C22376553|
+|Miron Nekrasovs| C22486382 |
+|Pavels Strelnikovs | C22491452 |
 
 # Description of the assignment
+In our assignment, we decided to create a platformer style game where a cube jumps over a gap in the floor to avoid landing in the toxic music wave below it. During the game the user can change the background 1-7 to simulate the cube going on an adventure where there is multiple different elements such as boids, rotating cubes, trees, rainfall, spheres and many more reacting to the music. We managed to get the elements reacting to music using the Minim audio library to extract audio from an MP3 file to allow for cool animations. In the project we have folders with our student number showing what elements were created by who but take that with a grain of salt as everyone in the group was helping each other mostly on 1 laptop while creating the project due to us casting it to a TV. 
+
+Here is our YouTube video of the project:
+
 
 # Instructions
-For Linux/Mac Systems Run:
+For Linux/Mac Systems:
 
 ```./CompileAndRun.sh```
 
-For Windows Systems Run:
-Double Click Compile.bat
+
+For Windows Systems:
+
+Double Click `Compile.bat`
 
 or
 
-Using Powershell:
-
-```.\Compile.bat```
+Using Powershell ```.\Compile.bat```
 
 # How it works
 
@@ -92,13 +88,4 @@ This is an image using an absolute URL:
 This is a youtube video:
 
 [![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU)
-
-This is a table:
-
-| Heading 1 | Heading 2 |
-|-----------|-----------|
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
 
