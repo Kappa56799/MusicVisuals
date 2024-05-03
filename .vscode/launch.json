@@ -1,31 +1,8 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "javac",
-            "type": "shell",
-            "command": "javac",
-            "args": [
-                "-d",
-                "${workspaceFolder}/out",
-                "${workspaceFolder}/src/ie/tudublin/*.java",
-                "${workspaceFolder}/src/c22486382/*.java",
-                "${workspaceFolder}/src/c22491452/*.java",
-                "${workspaceFolder}/src/c22376553/*.java"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": [
-                "$java-compilation"
-            ]
-        }
-    ],
     "configurations": [
         {
             "type": "java",
-            "name": "Main",
+            "name": "CodeLens (Launch) - Main",
             "request": "launch",
             "mainClass": "ie.tudublin.Main",
             "projectName": "java"
