@@ -1,5 +1,7 @@
 package c22376553;
+
 import MusicVis.MyVisual;
+
 public class square {
     MyVisual mv;
     float x, y = 0;
@@ -13,7 +15,6 @@ public class square {
         x = mv.width / 2 - 300;
         y = mv.height / 2 + 244;
     }
-
 
     public void render() {
         mv.hint(mv.DISABLE_DEPTH_TEST);
@@ -43,7 +44,6 @@ public class square {
         mv.popMatrix(); // Restore the previous transformation matrix
         mv.hint(mv.ENABLE_DEPTH_TEST);
     }
-
 
     public void jump() {
         if (!isJumping) { // Check if the cube is not already jumping

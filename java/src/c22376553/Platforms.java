@@ -1,6 +1,6 @@
 package c22376553;
-import MusicVis.MyVisual;
 
+import MusicVis.MyVisual;
 import java.util.ArrayList;
 
 public class Platforms {
@@ -32,7 +32,8 @@ public class Platforms {
                 platforms.remove(i);
             }
 
-            // Check if the last platform is ready to spawn a new one and no new platform has been spawned in this frame
+            // Check if the last platform is ready to spawn a new one and no new platform
+            // has been spawned in this frame
             if (i == platforms.size() - 1 && !hasSpawnedNewThisFrame && platform.shouldSpawnNew()) {
                 float newX = platform.getX() + platform.getWidth() + (gapWidth + mv.random(100));
                 platforms.add(new Platform(mv, newX, platform.getHeight(), mv.random(minWidth, maxWidth)));
@@ -88,7 +89,7 @@ class Platform {
     public float getHeight() {
         return y;
     }
-    
+
     public float getX() {
         return x;
     }
@@ -97,4 +98,3 @@ class Platform {
         return y;
     }
 }
-

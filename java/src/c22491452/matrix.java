@@ -1,7 +1,6 @@
 package c22491452;
 
 import MusicVis.MyVisual;
-
 import processing.core.PApplet;
 import processing.core.PFont;
 

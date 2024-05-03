@@ -1,9 +1,10 @@
 package c22376553;
+
 import MusicVis.MyVisual;
 
 public class Tree {
     MyVisual mv;
-    float theta;  // Angle of branch
+    float theta; // Angle of branch
     float spacing = 700; // Spacing between trees
     int lastColorChange = 0;
     int colorChangeInterval = 500; // Change color every 2 seconds
@@ -22,7 +23,7 @@ public class Tree {
 
         // Check if it's time to change color
         if (mv.millis() - lastColorChange > colorChangeInterval) {
-            currentColor = mv.color(mv.random(50,255), mv.random(50,255), mv.random(50,255));
+            currentColor = mv.color(mv.random(50, 255), mv.random(50, 255), mv.random(50, 255));
             lastColorChange = mv.millis(); // Update the last color change time
         }
 
@@ -48,7 +49,7 @@ public class Tree {
         drawTree(mv.width / 2, mv.height - 250); // Draw the middle tree
         drawTree(mv.width / 2 - spacing, mv.height - 250); // Draw the left tree
         drawTree(mv.width / 2 + spacing, mv.height - 250); // Draw the right tree
-        
+
         // Draw three upside-down trees from the top of the screen
         drawUpsideDownTree(mv.width / 2, 50);
         drawUpsideDownTree(mv.width / 2 - spacing, 50);
@@ -69,7 +70,7 @@ public class Tree {
         branch(300);
         mv.popMatrix(); // Restore the previous transformation state
     }
-    
+
     void drawUpsideDownTree(float x, float y) {
         // Start the tree from the top of the screen
         mv.pushMatrix(); // Save the current transformation state
@@ -91,12 +92,13 @@ public class Tree {
         // All recursive functions must have an exit condition!!!!
         // Here, ours is when the length of the branch is 2 pixels or less
         if (h > 2) {
-            mv.pushMatrix();    // Save the current state of transformation (i.e. where are we now)
-            mv.rotate(theta);   // Rotate by theta
-            mv.line(0, 0, 0, -h);  // Draw the branch
+            mv.pushMatrix(); // Save the current state of transformation (i.e. where are we now)
+            mv.rotate(theta); // Rotate by theta
+            mv.line(0, 0, 0, -h); // Draw the branch
             mv.translate(0, -h); // Move to the end of the branch
-            branch(h);       // Ok, now call myself to draw two new branches!!
-            mv.popMatrix();     // Whenever we get back here, we "pop" in order to restore the previous matrix state
+            branch(h); // Ok, now call myself to draw two new branches!!
+            mv.popMatrix(); // Whenever we get back here, we "pop" in order to restore the previous matrix
+                            // state
 
             // Repeat the same thing, only branch off to the "left" this time!
             mv.pushMatrix();

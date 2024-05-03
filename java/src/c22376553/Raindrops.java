@@ -1,4 +1,5 @@
 package c22376553;
+
 import MusicVis.MyVisual;
 import java.util.ArrayList;
 
@@ -20,16 +21,16 @@ public class Raindrops {
     }
 
     void drawRaindrops() {
-        
+
         for (int i = 0; i < 8; i++) { // Adjust the number of raindrops as needed
             float rx = mv.random(-500, mv.width + 100); // Random x position (extended beyond the screen)
             float ry = mv.random(-500, -20); // Random y position above the screen
             float rspeed = mv.random(2, 5); // Random falling speed
             float rlength = mv.random(6, 14); // Random length of raindrop
-            
+
             raindrops.add(new Raindrop(rx, ry, rspeed, rlength)); // Add raindrop to the list
         }
-        
+
         // Update and draw raindrops
         for (int i = raindrops.size() - 1; i >= 0; i--) {
             Raindrop drop = raindrops.get(i);
@@ -39,7 +40,7 @@ public class Raindrops {
                 raindrops.remove(i); // Remove raindrop if off the screen
             }
         }
-        
+
     }
 
     // Inner class for raindrop

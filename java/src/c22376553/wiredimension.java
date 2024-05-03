@@ -1,11 +1,13 @@
 package c22376553;
+
 import MusicVis.MyVisual;
+
 public class wiredimension {
     MyVisual mv;
     int rows = 5000 / 30;
     int cols = 2000 / 30;
     float[][] terrain = new float[cols][rows];
-    float smoothAmplitude = 0;    
+    float smoothAmplitude = 0;
 
     public wiredimension(MyVisual mv) {
         this.mv = mv;
@@ -18,19 +20,19 @@ public class wiredimension {
 
     // RGB colors
     int[] sunColors = {
-        mv.color(212, 202, 11),
-        mv.color(214, 198, 30),
-        mv.color(211, 170, 26),
-        mv.color(216, 157, 51),
-        mv.color(217, 124, 64),
-        mv.color(213, 104, 81),
-        mv.color(212, 51, 98),
-        mv.color(215, 29, 121),
-        mv.color(217, 11, 139),
-        mv.color(217, 0, 151)
+            mv.color(212, 202, 11),
+            mv.color(214, 198, 30),
+            mv.color(211, 170, 26),
+            mv.color(216, 157, 51),
+            mv.color(217, 124, 64),
+            mv.color(213, 104, 81),
+            mv.color(212, 51, 98),
+            mv.color(215, 29, 121),
+            mv.color(217, 11, 139),
+            mv.color(217, 0, 151)
     };
 
-    int bgColor = mv.color(0,0,30);
+    int bgColor = mv.color(0, 0, 30);
     float sunRadius = 500;
     float topSlitY;
     Rectangle[] slits;
@@ -45,7 +47,7 @@ public class wiredimension {
             this.h = h;
         }
 
-        void render() {        
+        void render() {
             lerpedBuffer = new float[mv.width];
             mv.fill(bgColor);
             mv.rect(mv.width / 2 - sunRadius, y, w, h);
@@ -125,40 +127,40 @@ public class wiredimension {
         for (int y = 0; y < cols; y++) {
             float xoff = 0;
             for (int x = 0; x < 25; x++) {
-                terrain[y][x] = mv.map(mv.noise(xoff, yoff), 0, 1, -30,150);
+                terrain[y][x] = mv.map(mv.noise(xoff, yoff), 0, 1, -30, 150);
                 xoff += 0.4f;
             }
             for (int x = 26; x < 45; x++) {
-                terrain[y][x] = mv.map(mv.noise(xoff, yoff), 0, 1, -30,150);
+                terrain[y][x] = mv.map(mv.noise(xoff, yoff), 0, 1, -30, 150);
                 xoff += 0.4f;
             }
             for (int x = 45; x < 50; x++) {
-                terrain[y][x] = mv.map(mv.noise(xoff, yoff), 0, 1, -30,80);
+                terrain[y][x] = mv.map(mv.noise(xoff, yoff), 0, 1, -30, 80);
                 xoff += 0.4f;
             }
             for (int x = 51; x < 56; x++) {
-                terrain[y][x] = mv.map(mv.noise(xoff, yoff), 0, 1, -30,25);
+                terrain[y][x] = mv.map(mv.noise(xoff, yoff), 0, 1, -30, 25);
                 xoff += 0.4f;
             }
             for (int x = 57; x < 61; x++) {
-                terrain[y][x] = mv.map(mv.noise(xoff, yoff), 0, 1, -30,80);
+                terrain[y][x] = mv.map(mv.noise(xoff, yoff), 0, 1, -30, 80);
                 xoff += 0.4f;
             }
             for (int x = 61; x < 80; x++) {
-                terrain[y][x] = mv.map(mv.noise(xoff, yoff), 0, 1, -30,150);
+                terrain[y][x] = mv.map(mv.noise(xoff, yoff), 0, 1, -30, 150);
                 xoff += 0.4f;
             }
             for (int x = 80; x < rows; x++) {
-                terrain[y][x] = mv.map(mv.noise(xoff, yoff), 0, 1, -30,150);
+                terrain[y][x] = mv.map(mv.noise(xoff, yoff), 0, 1, -30, 150);
                 xoff += 0.4f;
             }
-            yoff += 0.4f;   
+            yoff += 0.4f;
         }
 
         for (int y = 0; y < 10; y++) {
             float xoff = 0;
             for (int x = 0; x < rows; x++) {
-                terrain[y][x] = mv.map(mv.noise(xoff, yoff), 0, 1, -30,100);
+                terrain[y][x] = mv.map(mv.noise(xoff, yoff), 0, 1, -30, 100);
                 xoff += 0.4f;
             }
         }
@@ -183,8 +185,7 @@ public class wiredimension {
 
         float sum = 0;
 
-        for(int i = 0; i < mv.getAudioPlayer().mix.size(); i++)
-        {
+        for (int i = 0; i < mv.getAudioPlayer().mix.size(); i++) {
             sum += Math.abs(mv.getAudioPlayer().mix.get(i));
             lerpedBuffer[i] = mv.lerp(lerpedBuffer[i], mv.getAudioPlayer().mix.get(i), 0.1f);
         }
@@ -192,12 +193,11 @@ public class wiredimension {
         enlarge += 0.5f;
 
         float zoff = enlarge;
-        
+
         mv.beginShape();
         mv.translate(0, 0, -500);
         drawSun(sum);
         mv.endShape();
-
 
         mv.beginShape();
         flying -= smoothedAmplitude;
@@ -209,12 +209,13 @@ public class wiredimension {
         mv.translate(mv.width / 6 + 10, (mv.height / 2) + 70);
         mv.rotateX(mv.PI / 2);
         mv.translate(-mv.width / 2, -mv.height / 2);
-        mv.fill(0,0,20);
-        mv.stroke(255,20,147);
+        mv.fill(0, 0, 20);
+        mv.stroke(255, 20, 147);
         mv.strokeWeight(1);
         drawTerrain();
-    }    
-  public float[] getLerpedBuffer() {
+    }
+
+    public float[] getLerpedBuffer() {
         return lerpedBuffer;
     }
 
