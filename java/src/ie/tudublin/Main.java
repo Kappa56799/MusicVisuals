@@ -1,6 +1,9 @@
 package ie.tudublin;
 
 import MusicVis.MyVisual;
+import c22376553.*;
+import c22491452.*;
+import c22486382.*;
 
 public class Main {
 

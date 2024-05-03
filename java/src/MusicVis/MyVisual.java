@@ -5,7 +5,7 @@ import c22376553.*; // Kacper Palka
 import c22491452.*; //Pavels Strelnikovs
 import c22486382.*;
 
-public class MyVisual extends rft {
+public class MyVisual extends Visual {
     // Tree tree;
     square square;
     Raindrops raindrops;
