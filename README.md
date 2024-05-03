@@ -19,6 +19,9 @@ For Linux/Mac Systems:
 
 
 For Windows Systems:
+Run/Debug Java in Vscode
+
+or
 
 Double Click `Compile.bat`
 
