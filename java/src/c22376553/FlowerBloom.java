@@ -31,7 +31,6 @@ public class FlowerBloom {
     public void render() {
         // Render the flower petals
         renderDynamicBackground();
-        renderPetals();
     }
 
 
