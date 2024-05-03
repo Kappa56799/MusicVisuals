@@ -1,9 +1,9 @@
 package c22376553;
 import MusicVis.MyVisual;
-import c22486382.bigwave;
+
+
 public class FlowerBloom {
     MyVisual mv;
-    bigwave wave; // Using the bigwave class for wave motion
     int petals = 40; // Number of petals
     float[] angles; // Angles for each petal
     long lastChangeTime = 0; // Variable to store the last time color or size was changed
@@ -15,7 +15,6 @@ public class FlowerBloom {
 
     public FlowerBloom(MyVisual mv) {
         this.mv = mv;
-        wave = new bigwave(mv); // Initialize the wave object
         currentColor = mv.color(mv.random(70, 500), 100, 100);
         nextColor = mv.color(mv.random(70,500), mv.random(70,500), mv.random(70,500));
         currentSize = mv.random(80, 150);
@@ -33,62 +32,12 @@ public class FlowerBloom {
         renderDynamicBackground();
     }
 
-
-
-void renderPetals() {
-    mv.noStroke();
-    float hueStart = mv.random(360); // Random starting hue for petals
-    float hueEnd = (hueStart + 180) % 360; // Calculate ending hue for petals
-    float hue; // Interpolated hue for petals
-
-    // Define parameters for pulsating effect
-    float petalSizeStart = 30; // Starting size of petals
-    float petalSizeEnd = 80; // Ending size of petals
-    float pulseMagnitude = 10; // Magnitude of pulsation
-    float pulseSpeed = 0.5f; // Speed of pulsation
-    float petalOffset = mv.random(50, 150); // Random petal offset range
-
-    // Calculate pulsation factor based on sine function
-    float pulseFactor = mv.sin(mv.frameCount * pulseSpeed);
-
-    float amt = (float)(mv.millis() - lastChangeTime) / interval;
-
-      if (amt >= 1.0) {
-
-          // Change color
-          currentColor = nextColor;
-          nextColor = mv.color(mv.random(70,500), mv.random(70,500), mv.random(70,500));
-          // Change size
-          currentSize = nextSize;
-          nextSize = mv.random(80, 150);
-          // Update last change time
-          lastChangeTime = mv.millis();
-          amt = 0.0f;
-      }
-    for (int i = 0; i < petals; i++) {
-        // Interpolate hue
-        hue = mv.lerp(hueStart, hueEnd, (float)i / petals);
-
-        float x = mv.width / 2 + mv.cos(angles[i]) * petalOffset;
-        float y = mv.height / 2 + mv.sin(angles[i]) * petalOffset;
-
-        // Interpolate petal size
-        float petalSize = mv.lerp(currentSize, nextSize, amt);
-
-        mv.fill(mv.lerpColor(currentColor, nextColor, amt)); // Set petal color
-        mv.ellipse(x, y, mv.lerp(currentSize, nextSize, amt), mv.lerp(currentSize, nextSize, amt )); // Draw petals
-
-        // Update angle for next frame
-        angles[i] += 0.02; // You can adjust the speed of petal movement here
-    }
-}
-
 void renderDynamicBackground() {
     // Define background parameters
     int numShapes = 50; // Number of shapes
     float maxRadius = mv.max(mv.width, mv.height); // Maximum radius for shapes
     float hueOffset = mv.random(360); // Random hue offset to vary colors
-    float rotationSpeed = 0.01f; // Speed of rotation
+    float rotationSpeed = 0.1f; // Speed of rotation
 
     float amt = (float)(mv.millis() - lastChangeTime) / interval;
 
