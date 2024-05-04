@@ -11,7 +11,7 @@ public class matrix {
     PFont theFont;
     ArrayList<ArrayList<CharInfo>> streams;
     long lastChangeTime = 0; // Variable to store the last time color or size was changed
-    int interval = 50; // Interval in milliseconds for color and size change
+    int interval = 200; // Interval in milliseconds for color and size change
     int lastRenderedFrame = -1; // Last frame when rendering occurred
 
     public matrix(MyVisual mv) {
@@ -51,10 +51,10 @@ public class matrix {
         for (ArrayList<CharInfo> chars : streams) {
             int numChars = chars.size();
             for (int i = 0; i < numChars; i++) {
-                float alpha = mv.map(i, 0, numChars - 255, 255, 55);
-                mv.fill(255, 150, 255, alpha);
+                float alpha = mv.map(i, 0, numChars - 1, 150, 55);
+                mv.fill(100, 255, 100, alpha);
                 if (i == numChars - 1) {
-                    mv.fill(255, 255, 250);
+                    mv.fill(1, 1, 255);
                 }
                 mv.text(chars.get(i).c, chars.get(i).x, chars.get(i).y);
                 chars.get(i).y += chars.get(i).speed; // Adjust character movement speed
