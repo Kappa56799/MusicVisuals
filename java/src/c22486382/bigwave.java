@@ -19,7 +19,7 @@ public class bigwave {
         w = mv.width + 16; // Moved initialization here
 
         for (int i = 0; i < maxwaves; i++) {
-            amplitude[i] = mv.random(100, 120);
+            amplitude[i] = mv.random(100, 120);  //Changes the amplitude of the waves
             float period = mv.random(300, 1000); // How many pixels before the wave repeats
             dx[i] = (mv.TWO_PI / period) * xspacing;
         }
